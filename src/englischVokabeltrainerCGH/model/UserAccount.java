@@ -1,4 +1,6 @@
-package model;
+package englischVokabeltrainerCGH.model;
+
+import java.io.Serializable;
 
 public class UserAccount implements Serializable {
 
@@ -13,8 +15,6 @@ public class UserAccount implements Serializable {
 	private Login login;
 
 	private SchwierigkeitsLevel schwierigkeitsLevel;
-
-	private VokabelListe vokabelListe;
 
 	public UserAccount(String benutzername, SchwierigkeitsLevel level, String passwort) {
 

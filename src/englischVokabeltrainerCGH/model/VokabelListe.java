@@ -1,4 +1,4 @@
-package model;
+package englischVokabeltrainerCGH.model;
 
 public class VokabelListe {
 
@@ -7,8 +7,6 @@ public class VokabelListe {
 	private VokabelStatistik vokabelStatistik;
 
 	private VokabelPaar vokabelPaar;
-
-	private VokabelStatistik vokabelStatistik;
 
 	public VokabelListe(VokabelPaar[] vokabelPaare) {
 

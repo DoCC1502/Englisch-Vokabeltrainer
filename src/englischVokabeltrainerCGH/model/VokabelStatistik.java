@@ -1,3 +1,4 @@
+package englischVokabeltrainerCGH.model;
 public class VokabelStatistik {
 
 	private int gesamtFalsch;

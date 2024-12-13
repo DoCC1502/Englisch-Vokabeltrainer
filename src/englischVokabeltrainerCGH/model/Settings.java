@@ -1,4 +1,4 @@
-package model;
+package englischVokabeltrainerCGH.model;
 
 public class Settings {
 

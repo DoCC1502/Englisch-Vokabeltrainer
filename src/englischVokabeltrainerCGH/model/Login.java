@@ -1,12 +1,10 @@
-package model;
+package englischVokabeltrainerCGH.model;
 
 public class Login {
 
 	private UserAccount userAccount;
 
 	private SchwierigkeitsLevel schwierigkeitsLevel;
-
-	private UserAccount userAccount;
 
 	public boolean checkUserCredentials(UserAccount userAcc) {
 		return false;

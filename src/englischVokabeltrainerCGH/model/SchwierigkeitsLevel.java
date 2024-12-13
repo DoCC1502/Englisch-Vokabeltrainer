@@ -1,4 +1,4 @@
-import model.String;
+package englischVokabeltrainerCGH.model;
 
 public class SchwierigkeitsLevel {
 

@@ -1,10 +1,10 @@
-package model;
+package englischVokabeltrainerCGH.model;
 
 public class Result {
 
-	private int false;
+	private int falseAnswers;
 
-	private int right;
+	private int rightAnswers;
 
 	public boolean getResult() {
 		return false;

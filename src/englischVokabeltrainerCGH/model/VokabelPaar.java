@@ -1,4 +1,4 @@
-package model;
+package englischVokabeltrainerCGH.model;
 
 public class VokabelPaar {
 
@@ -8,21 +8,14 @@ public class VokabelPaar {
 
 	private VokabelPaarStatistik vokabelPaarStatistik;
 
-	private VokabelPaarStatistik vokabelPaarStatistik;
-
-	private VokabelPaarStatistik vokabelPaarStatistik;
-
 	public VokabelPaar(String wort, String wortEn) {
 
 	}
 
-	public boolean checkVokabelPaar(String wortDE) {
+	public boolean checkVokabelPaar(String wortDE, String wortEN) {
 		return false;
 	}
 
-	public boolean checkVokabelPaar(String wortEN) {
-		return false;
-	}
 
 	public void setWort(String wort) {
 

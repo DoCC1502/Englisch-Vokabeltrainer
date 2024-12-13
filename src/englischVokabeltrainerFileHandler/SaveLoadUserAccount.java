@@ -1,7 +1,6 @@
 package englischVokabeltrainerFileHandler;
 
-import model.String;
-import model.UserAccount;
+import englischVokabeltrainerCGH.model.UserAccount;
 
 public class SaveLoadUserAccount {
 

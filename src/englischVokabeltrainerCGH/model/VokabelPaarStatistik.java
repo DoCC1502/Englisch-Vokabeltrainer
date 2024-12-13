@@ -1,4 +1,4 @@
-import model.VokabelPaar;
+package englischVokabeltrainerCGH.model;
 
 public class VokabelPaarStatistik {
 
