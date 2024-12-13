@@ -1,19 +1,44 @@
 package englischVokabeltrainerCGH.model;
-
+/**
+ * Diese Klasse repräsentiert die Schwierigkeitsstufe.
+ *
+ * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ * @version 0.1
+ */
 public class SchwierigkeitsLevel {
 
-	private String level;
+	private int level;
 
-	public SchwierigkeitsLevel(String stringIn) {
+	/**
+	 * Erstellt eine neue Schwierigkeitsstufe.
+	 * @param intIN Schwierigkeitsstufe
+	 */
+	public SchwierigkeitsLevel(int intIN) {
 
 	}
 
-	public boolean checkSchwierigkeitsLevel(String stringIn) {
+	/**
+	 * Überprüft die Schwierigkeitsstufe.
+	 * @param intIN Schwierigkeitsstufe
+	 * @return true, wenn die Schwierigkeitsstufe korrekt ist, sonst false
+	 */
+	public boolean checkSchwierigkeitsLevel(int intIN) {
 		return false;
 	}
 
-	public void setLevel(String s) {
+	/**
+	 * Setzt die Schwierigkeitsstufe.
+	 * @param i Schwierigkeitsstufe
+	 */
+	public void setLevel(int i) {
 
 	}
 
+	/**
+	 * Gibt die Schwierigkeitsstufe zurück.
+	 * @return Schwierigkeitsstufe
+	 */
+	public int getLevel() {
+		return level;
+	}
 }
