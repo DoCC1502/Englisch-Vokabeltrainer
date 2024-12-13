@@ -1,4 +1,4 @@
 package englischVokabeltrainerCGH;
 
-public class VokabTrainerLayout {
+public class VokabController {
 }
