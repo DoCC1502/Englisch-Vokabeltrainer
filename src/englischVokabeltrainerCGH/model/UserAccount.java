@@ -24,7 +24,13 @@ public class UserAccount implements Serializable {
 	 * @param passwort Passwort
 	 */
 	public UserAccount(String benutzername, SchwierigkeitsLevel level, String passwort) {
-
+		if (benutzername != null && level != null && passwort != null) {
+			this.benutzername = benutzername;
+			this.level = level;
+			this.passwort = passwort;
+			VokabelPaar[] vokabelPaare = new VokabelPaar[0];
+			this.vokabelListe = new VokabelListe(vokabelPaare);
+		}
 	}
 
 	/**
@@ -42,7 +48,12 @@ public class UserAccount implements Serializable {
 	 * Erstellt einen neuen UserAccount.
 	 */
 	public UserAccount() {
-
+		SchwierigkeitsLevel sl = new SchwierigkeitsLevel(1);
+		this.level = sl;
+		this.benutzername = "Gast";
+		this.passwort = "Gast";
+		VokabelPaar[] vokabelPaare = new VokabelPaar[0];
+		this.vokabelListe = new VokabelListe(vokabelPaare);
 	}
 
 	/**
@@ -50,7 +61,7 @@ public class UserAccount implements Serializable {
 	 * @param benutzername Benutzername
 	 */
 	public void setBenutzername(String benutzername) {
-
+		this.benutzername = benutzername;
 	}
 
 	/**
@@ -58,7 +69,7 @@ public class UserAccount implements Serializable {
 	 * @return Benutzername
 	 */
 	public String getBenutzername() {
-		return null;
+		return benutzername;
 	}
 
 	/**
@@ -66,7 +77,16 @@ public class UserAccount implements Serializable {
 	 * @param level Schwierigkeitslevel
 	 */
 	public void setLevel(SchwierigkeitsLevel level) {
+		this.level = level;
+	}
 
+	/**
+	 * Setzt das Schwierigkeitslevel.
+	 * @param level Schwierigkeitslevel
+	 */
+	public void setLevel(int level) {
+		SchwierigkeitsLevel sl = new SchwierigkeitsLevel(level);
+		this.level = sl;
 	}
 
 	/**
@@ -74,7 +94,7 @@ public class UserAccount implements Serializable {
 	 * @return Schwierigkeitslevel
 	 */
 	public SchwierigkeitsLevel getLevel() {
-		return null;
+		return level;
 	}
 
 	/**
@@ -90,7 +110,7 @@ public class UserAccount implements Serializable {
 	 * @return Passwort
 	 */
 	public String getPasswort() {
-		return null;
+		return passwort;
 	}
 
 	/**
@@ -98,7 +118,7 @@ public class UserAccount implements Serializable {
 	 * @param vokabelListe Vokabelliste
 	 */
 	public void setVokabelListe(VokabelListe vokabelListe) {
-
+		this.vokabelListe = vokabelListe;
 	}
 
 	/**
@@ -106,7 +126,22 @@ public class UserAccount implements Serializable {
 	 * @return Vokabelliste
 	 */
 	public VokabelListe getVokabelListe() {
-		return null;
+		return vokabelListe;
+	}
+
+	public boolean checkUsername(String name) {
+		
+	}
+
+	/**
+	 * Löscht den UserAccount.
+	 */
+	protected void deleteEverything() {
+		level=null;
+		vokabelListe.deleteList();
+		vokabelListe=null;
+		benutzername=null;
+		passwort=null;
 	}
 
 }

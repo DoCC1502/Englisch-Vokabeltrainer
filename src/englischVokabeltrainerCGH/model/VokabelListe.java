@@ -58,4 +58,12 @@ public class VokabelListe {
 		return null;
 	}
 
+	/**
+	 * löscht die Liste
+	 */
+	protected void deleteList() {
+		for (int i = 0; i < vokabelPaare.length; i++) {
+			vokabelPaare[i] = null;
+		}
+	}
 }
