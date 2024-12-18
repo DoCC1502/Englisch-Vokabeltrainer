@@ -24,7 +24,7 @@ public class UserAccount implements Serializable {
 	 * @param passwort Passwort
 	 */
 	public UserAccount(String benutzername, SchwierigkeitsLevel level, String passwort) {
-		if (benutzername != null && level != null && passwort != null) {
+		if (benutzername != null && level != null && passwort != null && checkUsername(benutzername) && passwort.length() > 8) {
 			this.benutzername = benutzername;
 			this.level = level;
 			this.passwort = passwort;
@@ -41,17 +41,22 @@ public class UserAccount implements Serializable {
 	 * @param vokabelListe Vokabelliste
 	 */
 	public UserAccount(String benutzername, SchwierigkeitsLevel level, String passwort, VokabelListe vokabelListe) {
-
+		if (benutzername != null && level != null && passwort != null && checkUsername(benutzername) && passwort.length() > 8) {
+			this.benutzername = benutzername;
+			this.level = level;
+			this.passwort = passwort;
+			this.vokabelListe = vokabelListe;
+		}
 	}
 
 	/**
-	 * Erstellt einen neuen UserAccount.
+	 * Erstellt einen neuen Gast UserAccount.
 	 */
 	public UserAccount() {
 		SchwierigkeitsLevel sl = new SchwierigkeitsLevel(1);
 		this.level = sl;
 		this.benutzername = "Gast";
-		this.passwort = "Gast";
+		this.passwort = "12345678";
 		VokabelPaar[] vokabelPaare = new VokabelPaar[0];
 		this.vokabelListe = new VokabelListe(vokabelPaare);
 	}
@@ -102,7 +107,12 @@ public class UserAccount implements Serializable {
 	 * @param passwort Passwort
 	 */
 	public void setPasswort(String passwort) {
-
+		if(passwort.length() > 8) {
+			this.passwort = passwort;
+		}
+		else {
+			this.passwort = "12345678";
+		}
 	}
 
 	/**
@@ -129,8 +139,16 @@ public class UserAccount implements Serializable {
 		return vokabelListe;
 	}
 
+	/**
+	 * Überprüft den Benutzernamen.
+	 * @param name Benutzername
+	 * @return true, wenn der Benutzername korrekt ist, sonst false
+	 */
 	public boolean checkUsername(String name) {
-		
+		if (!(name.length() > 3 && name.length() < 20)) {
+			return false;
+		}
+		return name.matches("[a-zA-Z0-9_-]+");
 	}
 
 	/**

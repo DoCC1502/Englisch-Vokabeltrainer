@@ -1,7 +1,7 @@
 package englischVokabeltrainerCGH.model;
 
-import model.VokabelListe;
-import model.VokabelPaar;
+import englischVokabeltrainerCGH.model.*;
+import java.io.File;
 
 public class VokabelLoader {
 

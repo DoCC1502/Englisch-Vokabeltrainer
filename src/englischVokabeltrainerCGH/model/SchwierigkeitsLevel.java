@@ -16,6 +16,8 @@ public class SchwierigkeitsLevel {
 	public SchwierigkeitsLevel(int intIN) {
 		if (checkSchwierigkeitsLevel(intIN)) {
 			level = intIN;
+		} else {
+			level = 1;
 		}
 	}
 

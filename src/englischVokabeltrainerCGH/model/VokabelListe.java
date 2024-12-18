@@ -38,7 +38,8 @@ public class VokabelListe {
 	 * @return true, wenn das VokabelPaar gelöscht wurde, sonst false
 	 */
 	public int searchVokabelPaar(String wortDe, String wortEn) {
-		return 0;
+		//bitte returne -1 wenn nicht gefunden
+		return -1;
 	}
 
 	/**
@@ -54,7 +55,7 @@ public class VokabelListe {
 	 * Gibt ein zufälliges VokabelPaar zurück.
 	 * @return VokabelPaar
 	 */
-	public VokabelPaar getRandomVokabel() {
+	public VokabelPaar getRandomVokabelPaar() {
 		return null;
 	}
 
@@ -65,5 +66,13 @@ public class VokabelListe {
 		for (int i = 0; i < vokabelPaare.length; i++) {
 			vokabelPaare[i] = null;
 		}
+	}
+
+	/**
+	 * Gibt die Länge der Liste zurück.
+	 * @return
+	 */
+	public int getLength() {
+		return vokabelPaare.length;
 	}
 }

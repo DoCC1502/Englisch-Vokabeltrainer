@@ -36,5 +36,11 @@ public class Settings {
 	public void accountLoeschen(UserAccount userAccount) {
 		userAccount.deleteEverything();
 	}
+	/**
+	 * Setzt den Dark/Light Mode.
+	 * @param mode Dark/Light Mode
+	 */
+	public void setDarkLightMode(boolean mode) {
 
+	}
 }
