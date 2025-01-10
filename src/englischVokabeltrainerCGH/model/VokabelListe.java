@@ -1,4 +1,5 @@
 package englischVokabeltrainerCGH.model;
+import java.util.Random;
 
 /**
  * Die Klasse stellt eine Liste von VokabelPaaren dar.
@@ -19,7 +20,7 @@ public class VokabelListe {
 	 * @param vokabelPaare VokabelPaare
 	 */
 	public VokabelListe(VokabelPaar[] vokabelPaare) {
-
+		this.vokabelPaare = vokabelPaare;
 	}
 
 	/**
@@ -28,7 +29,7 @@ public class VokabelListe {
 	 * @param wortEn Wort in Englisch
 	 */
 	public void addVokabelPaar(String wortDe, String wortEn) {
-
+		VokabelPaar vokabelPaar = new VokabelPaar(wortDe, wortEn);
 	}
 
 	/**
@@ -38,7 +39,15 @@ public class VokabelListe {
 	 * @return true, wenn das VokabelPaar gelöscht wurde, sonst false
 	 */
 	public int searchVokabelPaar(String wortDe, String wortEn) {
-		return 0;
+		if(vokabelPaare == null || vokabelPaare.length == 0) {
+			return -1;
+		}
+		for(int i = 0; i < vokabelPaare.length; i++) {
+			if(vokabelPaare[i].getWortDe().equals(wortDe) && vokabelPaare[i].getWortEn().equals(wortEn)) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	/**
@@ -47,7 +56,7 @@ public class VokabelListe {
 	 * @return VokabelPaar
 	 */
 	public VokabelPaar getVokabelPaar(int index) {
-		return null;
+		return vokabelPaare[index];
 	}
 
 	/**
@@ -55,7 +64,12 @@ public class VokabelListe {
 	 * @return VokabelPaar
 	 */
 	public VokabelPaar getRandomVokabel() {
-		return null;
+		if(vokabelPaare == null || vokabelPaare.length == 0) {
+			return null;
+		}
+		Random random = new Random();
+		int index = random.nextInt(vokabelPaare.length);
+		return vokabelPaare[index];
 	}
 
 }

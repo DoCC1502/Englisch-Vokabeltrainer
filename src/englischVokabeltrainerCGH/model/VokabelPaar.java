@@ -23,7 +23,8 @@ public class VokabelPaar {
 	 * @param wortEn Wort in Englisch
 	 */
 	public VokabelPaar(String wortDe, String wortEn) {
-
+		this.wortDe = wortDe;
+		this.wortEn = wortEn;
 	}
 
 	/**
@@ -33,7 +34,7 @@ public class VokabelPaar {
 	 * @return true, wenn das Vokabelpaar korrekt ist, sonst false
 	 */
 	public boolean checkVokabelPaar(String wortDe, String wortEn) {
-		return false;
+		return this.wortDe.equals(wortDe) && this.wortEn.equals(wortEn);
 	}
 
 	/**
@@ -41,7 +42,7 @@ public class VokabelPaar {
 	 * @param wortDe Wort in Deutsch
 	 */
 	public void setWortDe(String wortDe) {
-
+		this.wortDe = wortDe;
 	}
 
 	/**
@@ -49,7 +50,7 @@ public class VokabelPaar {
 	 * @return Wort in Deutsch
 	 */
 	public String getWortDe() {
-		return null;
+		return wortDe;
 	}
 
 	/**
@@ -57,7 +58,7 @@ public class VokabelPaar {
 	 * @param wortEn Wort in Englisch
 	 */
 	public void setWortEn(String wortEn) {
-
+		this.wortEn = wortEn;
 	}
 
 	/**
@@ -65,14 +66,14 @@ public class VokabelPaar {
 	 * @return Wort in Englisch
 	 */
 	public String getWortEn() {
-		return null;
+		return wortEn;
 	}
 
 	/**
 	 * Setzt das Vokabelpaar als Favorit.
 	 */
 	public void setFavourite() {
-
+		this.isFavourite = true;
 	}
 
 	/**
@@ -80,7 +81,7 @@ public class VokabelPaar {
 	 * @param schwierigkeit Schwierigkeitslevel
 	 */
 	public void setSchwierigkeit(SchwierigkeitsLevel schwierigkeit) {
-
+		this.schwierigkeit = schwierigkeit;
 	}
 
 	/**
@@ -88,6 +89,6 @@ public class VokabelPaar {
 	 * @return Schwierigkeitslevel
 	 */
 	public SchwierigkeitsLevel getSchwierigkeit() {
-		return null;
+		return schwierigkeit;
 	}
 }
