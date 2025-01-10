@@ -1,5 +1,7 @@
 package englischVokabeltrainerCGH.model;
 
+import englischVokabeltrainerCGH.model.*;
+import java.io.File;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.Arrays;
@@ -11,6 +13,10 @@ import org.json.*;
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
  * @version 0.1
  */
+
+
+
+
 public class VokabelLoader {
 
 	private VokabelPaar[] vokabelToAdd;

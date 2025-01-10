@@ -15,7 +15,8 @@ public class VokabelStatistik {
 	 * Erstellt eine neue Vokabelstatistik.
 	 */
 	public VokabelStatistik() {
-
+		this.gesamtFalsch = 0;
+		this.gesamtRichtig = 0;
 	}
 
 	/**
@@ -23,7 +24,7 @@ public class VokabelStatistik {
 	 * @param falsch Anzahl aller falschen Antworten
 	 */
 	public void setGesamtFalsch(int falsch) {
-
+		this.gesamtFalsch = falsch;
 	}
 
 	/**
@@ -31,7 +32,7 @@ public class VokabelStatistik {
 	 * @return Anzahl aller falschen Antworten
 	 */
 	public int getGesamtFalsch() {
-		return 0;
+		return gesamtFalsch;
 	}
 
 	/**
@@ -39,7 +40,7 @@ public class VokabelStatistik {
 	 * @param richtig Anzahl aller richtigen Antworten
 	 */
 	public void setGesamtRichtig(int richtig) {
-
+		this.gesamtRichtig = richtig;
 	}
 
 	/**
@@ -47,7 +48,7 @@ public class VokabelStatistik {
 	 * @return Anzahl aller richtigen Antworten
 	 */
 	public int getGesamtRichtig() {
-		return 0;
+		return gesamtRichtig;
 	}
 
 }
