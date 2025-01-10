@@ -4,7 +4,6 @@ public class UploadVokabelFile {
 
 	private VokabelLoader vokabelLoader;
 
-	private VokabelLoader vokabelLoader;
 
 	public UploadVokabelFile(VokabelLoader vokabelLoader) {
 
