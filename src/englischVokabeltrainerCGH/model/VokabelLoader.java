@@ -32,5 +32,4 @@ public class VokabelLoader {
 	public void loadFromJSON(File file) {
 
 	}
-
 }

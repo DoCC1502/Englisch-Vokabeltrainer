@@ -17,7 +17,11 @@ public class Login {
 	 * @return true, wenn die Benutzerdaten korrekt sind, sonst false
 	 */
 	public boolean checkUserCredentials(UserAccount userAcc) {
-		return false;
+		if(userAcc.getBenutzername().equals(userAccount.getBenutzername()) && userAcc.getPasswort().equals(userAccount.getPasswort()) && userAcc.getLevel().equals(userAccount.getLevel())) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -25,7 +29,7 @@ public class Login {
 	 * @return Benutzeraccount
 	 */
 	public UserAccount getUserAccount() {
-		return null;
+		return userAccount;
 	}
 
 	/**
@@ -34,8 +38,8 @@ public class Login {
 	 * @param pass Passwort
 	 * @param level Schwierigkeitslevel
 	 */
-	public void createNewUser(String bName, String pass, String level) {
-
+	public void createNewUser(String bName, String pass, SchwierigkeitsLevel level) {
+		UserAccount user = new UserAccount(bName, level ,pass);
 	}
 
 }
