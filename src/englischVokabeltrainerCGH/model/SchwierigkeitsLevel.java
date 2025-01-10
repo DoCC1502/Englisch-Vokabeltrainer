@@ -14,7 +14,11 @@ public class SchwierigkeitsLevel {
 	 * @param intIN Schwierigkeitsstufe
 	 */
 	public SchwierigkeitsLevel(int intIN) {
-
+		if (checkSchwierigkeitsLevel(intIN)) {
+			level = intIN;
+		} else {
+			level = 1;
+		}
 	}
 
 	/**
@@ -23,6 +27,9 @@ public class SchwierigkeitsLevel {
 	 * @return true, wenn die Schwierigkeitsstufe korrekt ist, sonst false
 	 */
 	public boolean checkSchwierigkeitsLevel(int intIN) {
+		if (intIN >= 1 && intIN <= 3) {
+			return true;
+		}
 		return false;
 	}
 
@@ -31,7 +38,9 @@ public class SchwierigkeitsLevel {
 	 * @param i Schwierigkeitsstufe
 	 */
 	public void setLevel(int i) {
-
+		if (checkSchwierigkeitsLevel(i)) {
+			level = i;
+		}
 	}
 
 	/**

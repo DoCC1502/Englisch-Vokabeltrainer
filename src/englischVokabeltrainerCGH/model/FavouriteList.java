@@ -12,19 +12,24 @@ public class FavouriteList {
 	 * Erstellt eine neue Favoritenliste.
 	 */
 	public VokabelPaar[] getFavList() {
-		return null;
+		return favouriteWordList;
 	}
 	/**
 	 * Gibt ein Vokabelpaar aus der Favoritenliste zurück.
 	 */
-	public VokabelPaar getFavWord() {
-		return null;
+	public VokabelPaar getFavWord(int i) {
+		return favouriteWordList[i];
 	}
 	/**
 	 * Fügt ein Vokabelpaar zur Favoritenliste hinzu.
 	 */
 	public void addFavWord(VokabelPaar v) {
-
+		VokabelPaar[] temp = new VokabelPaar[favouriteWordList.length + 1];
+		for (int i = 0; i < favouriteWordList.length; i++) {
+			temp[i] = favouriteWordList[i];
+		}
+		temp[favouriteWordList.length] = v;
+		favouriteWordList = temp;
 	}
 
 }
