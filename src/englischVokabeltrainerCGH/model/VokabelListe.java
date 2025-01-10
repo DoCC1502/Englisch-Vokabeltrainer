@@ -47,7 +47,7 @@ public class VokabelListe {
 				return i;
 			}
 		}
-		return -1;
+		
 	}
 
 	/**
@@ -72,4 +72,20 @@ public class VokabelListe {
 		return vokabelPaare[index];
 	}
 
+	/**
+	 * löscht die Liste
+	 */
+	protected void deleteList() {
+		for (int i = 0; i < vokabelPaare.length; i++) {
+			vokabelPaare[i] = null;
+		}
+	}
+
+	/**
+	 * Gibt die Länge der Liste zurück.
+	 * @return
+	 */
+	public int getLength() {
+		return vokabelPaare.length;
+	}
 }
