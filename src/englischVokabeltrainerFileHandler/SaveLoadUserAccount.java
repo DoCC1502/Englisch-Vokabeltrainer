@@ -1,6 +1,9 @@
 package englischVokabeltrainerFileHandler;
 
 import englischVokabeltrainerCGH.model.UserAccount;
+
+import java.io.*;
+
 /**
  * Diese Klasse repräsentiert das Speichern und Laden von UserAccounts.
  *
@@ -11,15 +14,13 @@ public class SaveLoadUserAccount {
 
 	private String defaultPfad;
 
-	private UserAccount userAccount;
-
 	/**
 	 * Erstellt ein neues SaveLoadUserAccount.
 	 * @param userAccount UserAccount
 	 * @param filename Dateiname
 	 */
 	public void saveUserAccount(UserAccount userAccount, String filename) {
-
+		saveUserAccount(userAccount, filename, defaultPfad);
 	}
 
 	/**
@@ -29,7 +30,11 @@ public class SaveLoadUserAccount {
 	 * @param pfad Pfad
 	 */
 	public void saveUserAccount(UserAccount userAccount, String filename, String pfad) {
-
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(pfad + filename))) {
+			oos.writeObject(userAccount);
+		} catch (IOException e) {
+			System.err.println("Fehler beim Speichern des UserAccounts: " + e.getMessage());
+		}
 	}
 
 	/**
@@ -38,7 +43,7 @@ public class SaveLoadUserAccount {
 	 * @return UserAccount
 	 */
 	public UserAccount loadUserAccount(String filename) {
-		return null;
+		return loadUserAccount(filename, defaultPfad);
 	}
 
 	/**
@@ -48,7 +53,11 @@ public class SaveLoadUserAccount {
 	 * @return UserAccount
 	 */
 	public UserAccount loadUserAccount(String filename, String pfad) {
-		return null;
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(pfad + filename))) {
+			return (UserAccount) ois.readObject();
+		} catch (IOException | ClassNotFoundException e) {
+			System.err.println("Fehler beim Laden des UserAccounts: " + e.getMessage());
+			return null;
+		}
 	}
-
 }
