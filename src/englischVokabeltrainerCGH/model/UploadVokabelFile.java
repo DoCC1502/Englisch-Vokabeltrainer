@@ -1,6 +1,6 @@
 package englischVokabeltrainerCGH.model;
 
-import model.vokabelLoader;
+import englischVokabeltrainerCGH.model.*;
 import java.io.*;
 import java.nio.*;
 import java.nio.file.Files;
@@ -31,7 +31,7 @@ public class UploadVokabelFile {
 				JSONObject jsonObject = jsonArray.getJSONObject(i);
 				String wortDe = jsonObject.getString("wortDe");
 				String wortEn = jsonObject.getString("wortEn");
-				vokabelLoader.addToLoadList(wortDe, wortEn);
+				vokabelLoader.addToLoadList(new VokabelPaar(wortDe, wortEn));
 			}
 		} catch (IOException | JSONException e) {
 			System.err.println("Fehler beim Laden der JSON Datei: " + e.getMessage());
