@@ -6,4 +6,6 @@ package englischVokabeltrainerCGH;
  * @version 0.1
  */
 public class VokabController {
+    public void handleLogin(String username, String level) {
+    }
 }
