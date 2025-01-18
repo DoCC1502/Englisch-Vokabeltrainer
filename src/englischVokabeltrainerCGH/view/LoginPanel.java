@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
  * Panel für den Login
  *
  * @version 0.1
+ * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
  */
 public class LoginPanel extends JPanel {
 
@@ -52,16 +53,16 @@ public class LoginPanel extends JPanel {
 		JPanel rightIconsPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		rightIconsPanel.setBackground(Color.WHITE);
 
-		JButton iconButton1 = createIconButton("resource/Upload.png");
-		JButton iconButton2 = createIconButton("resource/Favoriten.png");
-		JButton iconButton3 = createIconButton("resource/settings.png");
+		JButton iconButton1 = createIconButton("resource/Upload.png", "UploadPanel");
+		JButton iconButton2 = createIconButton("resource/Favoriten.png", "FavPanel");
+		JButton iconButton3 = createIconButton("resource/settings.png", "SettingsPanel");
 
 		rightIconsPanel.add(iconButton1);
 		rightIconsPanel.add(iconButton2);
 		rightIconsPanel.add(iconButton3);
 
 		// Login Icon hinzufügen
-		JButton loginButton = createIconButton("resource/login.png");
+		JButton loginButton = createIconButton("resource/login.png", "LoginPanel");
 		JPanel leftIconsPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		leftIconsPanel.setBackground(Color.WHITE);
 		leftIconsPanel.add(loginButton);
@@ -124,13 +125,19 @@ public class LoginPanel extends JPanel {
 		});
 	}
 
-	private JButton createIconButton(String iconPath) {
+	private JButton createIconButton(String iconPath, String panelName) {
 		ImageIcon icon = new ImageIcon(iconPath);
 		Image scaledImage = icon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 		JButton button = new JButton(new ImageIcon(scaledImage));
 		button.setBorderPainted(false);
 		button.setContentAreaFilled(false);
 		button.setFocusPainted(false);
+		button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				vController.getVFrame().switchToPanel(panelName);
+			}
+		});
 		return button;
 	}
 

@@ -6,6 +6,12 @@ import englischVokabeltrainerCGH.model.*;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Hauptframe des Vokabeltrainers
+ *
+ * @version 0.1
+ * @autor Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ */
 public class VokabFrame extends JFrame {
 	private CardLayout cardLayout;
 	private JPanel mainPanel;
@@ -34,7 +40,7 @@ public class VokabFrame extends JFrame {
 		mainPanel = new JPanel(cardLayout);
 
 		// Initialize panels
-		uploadPanel = new UploadPanel(new UploadVokabelFile(new VokabelLoader()));
+		uploadPanel = new UploadPanel(new UploadVokabelFile(new VokabelLoader()), vController);
 		settingsPanel = new SettingsPanel(vController);
 		loginPanel = new LoginPanel(vController);
 		favPanel = new FavPanel(vController);
@@ -64,11 +70,13 @@ public class VokabFrame extends JFrame {
 
 	public void switchToPanel(String name) {
 		cardLayout.show(mainPanel, name);
+		mainPanel.revalidate();
+		mainPanel.repaint();
 	}
 
 	public static void main(String[] args) {
-		HomemenuPanel startPanel = new HomemenuPanel();
 		VokabController vController = new VokabController();
+		HomemenuPanel startPanel = new HomemenuPanel(vController);
 		VokabFrame frame = new VokabFrame(startPanel, vController);
 		frame.setVisible(true);
 	}

@@ -1,5 +1,6 @@
 package englischVokabeltrainerCGH.view;
 
+import englischVokabeltrainerCGH.VokabController;
 import englischVokabeltrainerCGH.model.UploadVokabelFile;
 
 import englischVokabeltrainerCGH.model.VokabelLoader;
@@ -26,12 +27,13 @@ public class UploadPanel extends JPanel {
 	private JLabel statusLabel;
 	private JButton backButton;
 	private UploadVokabelFile uploadVokabelFile;
+	private VokabController vController;
 
-	public UploadPanel(UploadVokabelFile uploadVokabelFile) {
+	public UploadPanel(UploadVokabelFile uploadVokabelFile, VokabController vController) {
 		this.uploadVokabelFile = uploadVokabelFile;
 
 		setLayout(new GridLayout(5, 1, 10, 10));
-
+		setBackground(Color.WHITE);
 
 		instructionLabel = new JLabel("Bitte wählen Sie ein Dateiformat und laden Sie die Datei hoch:", SwingConstants.CENTER);
 		fileTypeComboBox = new JComboBox<>(new String[]{"JSON", "TXT", "CSV"});
@@ -50,6 +52,13 @@ public class UploadPanel extends JPanel {
 		add(buttonPanel);
 
 		add(statusLabel);
+
+		backButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				vController.getVFrame().switchToPanel("HomemenuPanel");
+			};
+		});
 
 		add(backButton);
 
@@ -100,6 +109,8 @@ public class UploadPanel extends JPanel {
 				}
 			}
 		});
+		comboBoxPanel.setBackground(Color.WHITE);
+		buttonPanel.setBackground(Color.WHITE);
 	}
 
 	private boolean validateFileType(File file, String expectedFileType) {
@@ -139,7 +150,7 @@ public class UploadPanel extends JPanel {
 		JFrame frame = new JFrame("Upload Panel");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(400, 300);
-		frame.add(new UploadPanel(uploadVokabelFile));
+		frame.add(new UploadPanel(uploadVokabelFile, new VokabController()));
 		frame.setVisible(true);
 	}
 }

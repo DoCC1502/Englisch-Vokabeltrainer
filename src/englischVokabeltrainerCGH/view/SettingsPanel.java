@@ -12,8 +12,11 @@ import javax.swing.*;
  */
 public class SettingsPanel extends JPanel {
     private VokabController vController;
-
+    
     public SettingsPanel(VokabController vController) {
+        this.vController = vController;
+
 
     }
+
 }

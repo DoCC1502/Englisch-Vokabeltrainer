@@ -16,6 +16,7 @@ import java.awt.image.BufferedImage;
  * Panel für das Hauptmenü
  *
  * @version 0.1
+ * @autor Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
  */
 public class HomemenuPanel extends JPanel {
 
@@ -23,11 +24,14 @@ public class HomemenuPanel extends JPanel {
 	private JLabel welcomeLabel;
 	private JButton startButton;
 
+	private VokabController vController;
+
 	/**
 	 * Konstruktor
 	 */
 
-	public HomemenuPanel() {
+	public HomemenuPanel(VokabController vController) {
+		this.vController = vController;
 		initializeComponents();
 	}
 
@@ -49,16 +53,16 @@ public class HomemenuPanel extends JPanel {
 		JPanel rightIconsPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		rightIconsPanel.setBackground(Color.WHITE);
 
-		JButton iconButton1 = createIconButton("resource/Upload.png");
-		JButton iconButton2 = createIconButton("resource/Favoriten.png");
-		JButton iconButton3 = createIconButton("resource/settings.png");
+		JButton iconButton1 = createIconButton("resource/Upload.png", "UploadPanel");
+		JButton iconButton2 = createIconButton("resource/Favoriten.png", "FavPanel");
+		JButton iconButton3 = createIconButton("resource/settings.png", "SettingsPanel");
 
 		rightIconsPanel.add(iconButton1);
 		rightIconsPanel.add(iconButton2);
 		rightIconsPanel.add(iconButton3);
 
 		// Login Icon hinzufügen
-		JButton loginButton = createIconButton("resource/login.png");
+		JButton loginButton = createIconButton("resource/login.png", "LoginPanel");
 		JPanel leftIconsPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		leftIconsPanel.setBackground(Color.WHITE);
 		leftIconsPanel.add(loginButton);
@@ -112,13 +116,19 @@ public class HomemenuPanel extends JPanel {
 		});
 	}
 
-	private JButton createIconButton(String iconPath) {
+	private JButton createIconButton(String iconPath, String panelName) {
 		ImageIcon icon = new ImageIcon(iconPath);
 		Image scaledImage = icon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 		JButton button = new JButton(new ImageIcon(scaledImage));
 		button.setBorderPainted(false);
 		button.setContentAreaFilled(false);
 		button.setFocusPainted(false);
+		button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				vController.getVFrame().switchToPanel(panelName);
+			}
+		});
 		return button;
 
 	}
@@ -131,17 +141,10 @@ public class HomemenuPanel extends JPanel {
 	}
 
 	public static void main(String[] args) {
-		// Erstelle das JFrame
-		JFrame frame = new JFrame("Englisch Vokabeltrainer - Hauptmenü");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(600, 400);
-		frame.setLocationRelativeTo(null); // Zentriert das Fenster
+		VokabController vc = new VokabController();
+		VokabFrame vFrame = new VokabFrame(new HomemenuPanel(vc), vc);
+		vFrame.setVisible(true);
 
-		// Füge das HomeMenuPanel hinzu
-		HomemenuPanel homeMenuPanel = new HomemenuPanel();
-		frame.add(homeMenuPanel);
 
-		// Zeige das Fenster
-		frame.setVisible(true);
 	}
 }

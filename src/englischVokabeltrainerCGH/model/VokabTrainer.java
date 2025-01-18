@@ -2,6 +2,12 @@ package englischVokabeltrainerCGH.model;
 
 import java.util.Random;
 
+/**
+ * Diese Klasse repräsentiert den Vokabeltrainer.
+ *
+ * @version 0.1
+ * @autor Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ */
 public class VokabTrainer {
 	UserAccount userAccount;
 	VokabelListe vokabelListe;
