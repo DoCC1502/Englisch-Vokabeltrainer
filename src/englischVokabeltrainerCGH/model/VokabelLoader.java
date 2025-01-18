@@ -1,22 +1,16 @@
 package englischVokabeltrainerCGH.model;
 
-import englischVokabeltrainerCGH.model.*;
-import java.io.File;
 import java.io.*;
-import java.lang.reflect.Type;
 import java.util.Arrays;
-import java.util.List;
-import org.json.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 /**
  * Diese Klasse repräsentiert das Laden von Vokabeln.
  *
- * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ * @author Dario Cikojevic
  * @version 0.1
  */
-
-
-
-
 public class VokabelLoader {
 
 	private VokabelPaar[] vokabelToAdd;
@@ -31,10 +25,14 @@ public class VokabelLoader {
 	/**
 	 * Fügt Vokabeln zur Hauptliste hinzu.
 	 * @param vokabeln Vokabeln
+	 * @param user UserAccount
 	 */
-	public void addToMainList(VokabelPaar[] vokabeln) {
+	public void addToMainList(VokabelPaar[] vokabeln, UserAccount user) {
+		// Add vocabulary to the main list
 		vokabelToAdd = Arrays.copyOf(vokabelToAdd, vokabelToAdd.length + vokabeln.length);
 		System.arraycopy(vokabeln, 0, vokabelToAdd, vokabelToAdd.length - vokabeln.length, vokabeln.length);
+
+
 	}
 
 	/**

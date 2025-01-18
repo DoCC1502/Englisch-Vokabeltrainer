@@ -1,4 +1,7 @@
 package englischVokabeltrainerCGH.model;
+
+import java.util.List;
+
 /**
  * Diese Klasse repräsentiert die Vokabelstatistik.
  *
@@ -10,6 +13,8 @@ public class VokabelStatistik {
 	private int gesamtFalsch;
 
 	private int gesamtRichtig;
+	private List<VokabelPaarStatistik> vokabelPaarStatistiken;
+
 
 	/**
 	 * Erstellt eine neue Vokabelstatistik.
@@ -17,6 +22,22 @@ public class VokabelStatistik {
 	public VokabelStatistik() {
 		this.gesamtFalsch = 0;
 		this.gesamtRichtig = 0;
+	}
+
+	/**
+	 * Fügt eine VokabelPaarStatistik hinzu.
+	 * @param paarStatistik VokabelPaarStatistik
+	 */
+	public void addVokabelPaarStatistik(VokabelPaarStatistik paarStatistik) {
+			this.vokabelPaarStatistiken.add(paarStatistik);
+	}
+
+	/**
+	 * Gibt die Liste der VokabelPaarStatistiken zurück.
+	 * @return Liste der VokabelPaarStatistiken
+	 */
+	public List<VokabelPaarStatistik> getVokabelPaarStatistiken() {
+		return this.vokabelPaarStatistiken;
 	}
 
 	/**

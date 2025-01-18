@@ -47,7 +47,7 @@ public class VokabelListe {
 				return i;
 			}
 		}
-		
+		return -1;
 	}
 
 	/**

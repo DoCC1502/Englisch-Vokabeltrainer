@@ -1,22 +1,92 @@
 package englischVokabeltrainerCGH.view;
 
-import englischVokabeltrainerCGH.VokabController;
+import englischVokabeltrainerCGH.model.VokabelPaar;
+import englischVokabeltrainerCGH.model.VokabelPaarStatistik;
+import englischVokabeltrainerCGH.model.VokabelStatistik;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.List;
+
 /**
  * Panel für die Statistik
  *
- * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ * @autor Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
  * @version 0.1
  */
-public class StatistikPanel {
+public class StatistikPanel extends JPanel {
 
-	private VokabController vController;
+	private VokabelStatistik statistik;
+	private VokabelPaar vokabelPaar;
 
 	/**
 	 * Konstruktor
-	 * @param vController Controller
+	 * @param statistik Vokabelstatistik
 	 */
-	public StatistikPanel(VokabController vController) {
+	public StatistikPanel(VokabelStatistik statistik, VokabelPaar vokabelPaar) {
+		this.statistik = statistik;
+		this.vokabelPaar = vokabelPaar;
+		initializePanel();
+	}
+
+	private JButton createIconButton(String iconPath) {
+		ImageIcon icon = new ImageIcon(iconPath);
+		Image scaledImage = icon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+		JButton button = new JButton(new ImageIcon(scaledImage));
+		button.setBorderPainted(false);
+		button.setContentAreaFilled(false);
+		button.setFocusPainted(false);
+		return button;
+	}
+
+	/**
+	 * Initialisiert das Panel.
+	 */
+	private void initializePanel() {
+		setLayout(new GridLayout(2, 1));
+		// Icons hinzufügen
+		JPanel iconPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+		iconPanel.setBackground(Color.WHITE);
+
+		JButton iconButton1 = createIconButton("resource/Upload.png");
+		JButton iconButton2 = createIconButton("resource/Favoriten.png");
+		JButton iconButton3 = createIconButton("resource/settings.png");
+
+		iconPanel.add(iconButton1);
+		iconPanel.add(iconButton2);
+		iconPanel.add(iconButton3);
+
+		add(iconPanel);
+		// Statistik-Anzeige
+		JPanel statistikPanel = new JPanel(new GridLayout(0, 1, 5, 5));
+		statistikPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+		JLabel titleLabel = new JLabel("Statistik", SwingConstants.CENTER);
+		titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+		statistikPanel.add(titleLabel);
+
+
+
+		// Gesamtstatistik
+		JLabel totalCorrectLabel = new JLabel("Gesamt richtige Antworten von " + vokabelPaar.getWortEn()+ ": " + statistik.getGesamtRichtig());
+		JLabel totalIncorrectLabel = new JLabel("Gesamt falsche Antworten von " + vokabelPaar.getWortDe() + ": " + statistik.getGesamtFalsch());
+		statistikPanel.add(totalCorrectLabel);
+		statistikPanel.add(totalIncorrectLabel);
+
+		add(statistikPanel);
+
 
 	}
 
+	public static void main(String[] args) {
+		// Beispiel-Daten für die Statistik
+		VokabelStatistik statistik = new VokabelStatistik();
+		VokabelPaar vokabelPaar1 = new VokabelPaar("Hund", "Dog");
+
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(new StatistikPanel(statistik, vokabelPaar1));
+		frame.setSize(400, 400);
+		frame.setVisible(true);
+	}
 }

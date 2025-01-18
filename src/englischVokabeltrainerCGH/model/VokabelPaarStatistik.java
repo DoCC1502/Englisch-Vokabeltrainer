@@ -9,13 +9,17 @@ public class VokabelPaarStatistik {
 
 	private int falsch;
 	private int richtig;
+	private String wortDe;
+	private String wortEn;
 
 	/**
 	 * Erstellt eine neue VokabelPaarStatistik.
 	 */
-	public VokabelPaarStatistik() {
+	public VokabelPaarStatistik(String wortEn, String wortDe, int richtig, int falsch) {
 		this.falsch = 0;
 		this.richtig = 0;
+		this.wortDe = wortDe;
+		this.wortEn = wortEn;
 	}
 
 	/**
@@ -53,6 +57,37 @@ public class VokabelPaarStatistik {
 	 */
 	public int getRichtig() {
 		return richtig;
+	}
+	/**
+	 * Setzt das deutsche Wort.
+	 * @param wortDe Wort in Deutsch
+	 */
+	public void setWortDe(String wortDe) {
+		this.wortDe = wortDe;
+	}
+
+	/**
+	 * Gibt das deutsche Wort zurück.
+	 * @return Wort in Deutsch
+	 */
+	public String getWortDe() {
+		return wortDe;
+	}
+
+	/**
+	 * Setzt das englische Wort.
+	 * @param wortEn Wort in Englisch
+	 */
+	public void setWortEn(String wortEn) {
+		this.wortEn = wortEn;
+	}
+
+	/**
+	 * Gibt das englische Wort zurück.
+	 * @return Wort in Englisch
+	 */
+	public String getWortEn() {
+		return wortEn;
 	}
 
 }

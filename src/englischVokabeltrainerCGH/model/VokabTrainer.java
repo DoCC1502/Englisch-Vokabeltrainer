@@ -23,10 +23,10 @@ public class VokabTrainer {
 	 * 0 ist die Frage, 1 ist die richtige Antwort, 2-4 sind falsche Antworten.
 	 */
 	public void nextQuestion() {
-		VokabelPaar vp = vokabelListe.getRandomVokabelPaar();
+		VokabelPaar vp = vokabelListe.getRandomVokabel();
 		VokabelPaar[] randomVokabelPaare = new VokabelPaar[3];
 		for (int i = 0; i < 3; i++) {
-			randomVokabelPaare[i] = vokabelListe.getRandomVokabelPaar();
+			randomVokabelPaare[i] = vokabelListe.getRandomVokabel();
 			if (randomVokabelPaare[i].equals(vp)) {
 				i--;
 			}
