@@ -1,4 +1,6 @@
 package englischVokabeltrainerCGH;
+import englischVokabeltrainerCGH.model.*;
+import englischVokabeltrainerCGH.view.*;
 /**
  * Diese Klasse repräsentiert den Vokabeltrainer.
  *
@@ -6,4 +8,44 @@ package englischVokabeltrainerCGH;
  * @version 0.1
  */
 public class VokabController {
+
+    private UserAccount userAccount;
+    private VokabTrainer vTrainerModel;
+    private HomemenuPanel homemenuPanel;
+    private VokabFrame vFrame;
+    private SettingsPanel vSettings;
+    private LoginPanel vLogin;
+    private FavPanel vFav;
+    private VokabTrainerPanel vTrainer;
+    private UploadPanel vUpload;
+    private ResultPanel vResult;
+    private StatistikPanel vStatistik;
+
+    public VokabController() {
+        userAccount = new UserAccount();
+        vTrainerModel = new VokabTrainer(userAccount);
+        homemenuPanel = new HomemenuPanel(this);
+        vFrame = new VokabFrame(homemenuPanel);
+        vSettings = new SettingsPanel(this);
+        vLogin = new LoginPanel(this);
+        vFav = new FavPanel(this);
+        vTrainer = new VokabTrainerPanel(this);
+        vUpload = new UploadPanel(this, new UploadVokabelFile(new VokabelLoader()));
+        vResult = new ResultPanel(this);
+        vStatistik = new StatistikPanel(this);
+    }
+
+
+
+    public FavouriteList getFavouriteList() {
+        return userAccount.getFavouriteList();
+    }
+
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public static void main(String[] args) {
+        new VokabController();
+    }
 }
