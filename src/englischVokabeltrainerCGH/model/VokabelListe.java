@@ -52,16 +52,15 @@ public class VokabelListe {
 	 * @return true, wenn das VokabelPaar gelöscht wurde, sonst false
 	 */
 	public int searchVokabelPaar(String wortDe, String wortEn) {
-		if(vokabelPaare == null || vokabelPaare.length == 0) {
-			return -1;
-		}
-		for(int i = 0; i < vokabelPaare.length; i++) {
-			if(vokabelPaare[i].getWortDe().equals(wortDe) && vokabelPaare[i].getWortEn().equals(wortEn)) {
-				return i;
+		if(vokabelPaare != null || vokabelPaare.length != 0) {
+			for(int i = 0; i < vokabelPaare.length; i++) {
+				if(vokabelPaare[i].getWortDe().equals(wortDe) && vokabelPaare[i].getWortEn().equals(wortEn)) {
+					return i;
+				}
 			}
 		}
 		return -1;
-	}
+  }
 
 	/**
 	 * Gibt ein VokabelPaar zurück.

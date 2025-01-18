@@ -9,6 +9,9 @@ import englischVokabeltrainerCGH.view.*;
  */
 public class VokabController {
 
+    
+
+
     private UserAccount userAccount;
     private VokabTrainer vTrainerModel;
     private HomemenuPanel homemenuPanel;
@@ -44,8 +47,10 @@ public class VokabController {
     public UserAccount getUserAccount() {
         return userAccount;
     }
+    public void handleLogin(String username, String level) {}
 
     public static void main(String[] args) {
         new VokabController();
+
     }
 }
