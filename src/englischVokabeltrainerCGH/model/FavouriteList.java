@@ -8,6 +8,12 @@ package englischVokabeltrainerCGH.model;
  */
 public class FavouriteList {
 	private VokabelPaar[] favouriteWordList;
+
+	public FavouriteList(int i) {
+		favouriteWordList = new VokabelPaar[i];
+	}
+
+
 	/**
 	 * Erstellt eine neue Favoritenliste.
 	 */
@@ -24,11 +30,37 @@ public class FavouriteList {
 	 * Fügt ein Vokabelpaar zur Favoritenliste hinzu.
 	 */
 	public void addFavWord(VokabelPaar v) {
+		if (favouriteWordList == null) {
+			favouriteWordList = new VokabelPaar[1];
+			favouriteWordList[0] = v;
+			return;
+		}
 		VokabelPaar[] temp = new VokabelPaar[favouriteWordList.length + 1];
 		for (int i = 0; i < favouriteWordList.length; i++) {
 			temp[i] = favouriteWordList[i];
 		}
 		temp[favouriteWordList.length] = v;
+		favouriteWordList = temp;
+	}
+
+	/**
+	 * Entfernt ein Vokabelpaar aus der Favoritenliste.
+	 * @param v
+	 */
+	public void removeFavWord(VokabelPaar v) {
+		if (favouriteWordList == null || favouriteWordList.length == 0) {
+			return;
+		}
+		VokabelPaar[] temp = new VokabelPaar[favouriteWordList.length - 1];
+		int index = 0;
+		for (int i = 0; i < favouriteWordList.length; i++) {
+			if (!favouriteWordList[i].equals(v)) {
+				if (index < temp.length) {
+					temp[index] = favouriteWordList[i];
+					index++;
+				}
+			}
+		}
 		favouriteWordList = temp;
 	}
 

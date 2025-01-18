@@ -29,7 +29,20 @@ public class VokabelListe {
 	 * @param wortEn Wort in Englisch
 	 */
 	public void addVokabelPaar(String wortDe, String wortEn) {
+
 		VokabelPaar vokabelPaar = new VokabelPaar(wortDe, wortEn);
+		if(vokabelPaare == null) {
+			vokabelPaare = new VokabelPaar[1];
+			vokabelPaare[0] = vokabelPaar;
+		} else {
+			VokabelPaar[] temp = new VokabelPaar[vokabelPaare.length + 1];
+			for(int i = 0; i < vokabelPaare.length; i++) {
+				temp[i] = vokabelPaare[i];
+			}
+			temp[vokabelPaare.length] = vokabelPaar;
+			vokabelPaare = temp;
+		}
+
 	}
 
 	/**
@@ -47,7 +60,7 @@ public class VokabelListe {
 			}
 		}
 		return -1;
-    }
+  }
 
 	/**
 	 * Gibt ein VokabelPaar zurück.
