@@ -1,6 +1,7 @@
 package englischVokabeltrainerCGH.view;
 
 import englischVokabeltrainerCGH.VokabController;
+
 import englischVokabeltrainerCGH.model.UserAccount;
 
 import javax.swing.*;
@@ -10,13 +11,16 @@ import java.awt.event.ActionListener;
 import java.util.HashSet;
 import java.util.Set;
 
+
 /**
  * Panel für die Favoriten
  *
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
  * @version 0.1
  */
-public class FavPanel extends JPanel{
+
+public class FavPanel extends JPanel {
+
 
 	private VokabController vController;
 

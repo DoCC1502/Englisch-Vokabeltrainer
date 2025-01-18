@@ -168,5 +168,4 @@ public class UserAccount implements Serializable {
 		benutzername=null;
 		passwort=null;
 	}
-
 }

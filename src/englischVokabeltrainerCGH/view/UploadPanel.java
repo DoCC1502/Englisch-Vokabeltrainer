@@ -1,8 +1,10 @@
 package englischVokabeltrainerCGH.view;
 
 import englischVokabeltrainerCGH.model.UploadVokabelFile;
+
 import englischVokabeltrainerCGH.model.VokabelLoader;
 import englischVokabeltrainerCGH.model.VokabelPaar;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +12,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+/**
+ * Panel für das Uploaden von Vokabeln
+ *
+ * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ * @version 0.1
+ */
 public class UploadPanel extends JPanel {
 
 	private JLabel instructionLabel;

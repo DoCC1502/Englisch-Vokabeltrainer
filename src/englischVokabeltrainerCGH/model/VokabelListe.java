@@ -1,6 +1,6 @@
 package englischVokabeltrainerCGH.model;
 import java.util.Random;
-
+import englischVokabeltrainerCGH.VokabController;
 /**
  * Die Klasse stellt eine Liste von VokabelPaaren dar.
  *
@@ -60,7 +60,8 @@ public class VokabelListe {
 			}
 		}
 		return -1;
-  }
+	}
+
 
 	/**
 	 * Gibt ein VokabelPaar zurück.

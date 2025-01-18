@@ -1,5 +1,8 @@
 package englischVokabeltrainerCGH.view;
 
+
+import englischVokabeltrainerCGH.VokabController;
+
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
@@ -7,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+
 
 /**
  * Panel für das Hauptmenü
@@ -22,6 +26,7 @@ public class HomemenuPanel extends JPanel {
 	/**
 	 * Konstruktor
 	 */
+
 	public HomemenuPanel() {
 		initializeComponents();
 	}
@@ -115,6 +120,7 @@ public class HomemenuPanel extends JPanel {
 		button.setContentAreaFilled(false);
 		button.setFocusPainted(false);
 		return button;
+
 	}
 
 	/**
