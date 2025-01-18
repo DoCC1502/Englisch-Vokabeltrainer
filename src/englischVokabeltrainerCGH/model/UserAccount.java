@@ -17,6 +17,8 @@ public class UserAccount implements Serializable {
 
 	private VokabelListe vokabelListe;
 
+	private FavouriteList favouriteList;
+
 	/**
 	 * Erstellt einen neuen UserAccount.
 	 * @param benutzername Benutzername
@@ -57,8 +59,9 @@ public class UserAccount implements Serializable {
 		this.level = sl;
 		this.benutzername = "Gast";
 		this.passwort = "12345678";
-		VokabelPaar[] vokabelPaare = new VokabelPaar[0];
-		this.vokabelListe = new VokabelListe(vokabelPaare);
+		this.vokabelListe = new VokabelListe(new VokabelPaar[0]);
+		favouriteList = new FavouriteList(0);
+
 	}
 
 	/**
@@ -137,6 +140,10 @@ public class UserAccount implements Serializable {
 	 */
 	public VokabelListe getVokabelListe() {
 		return vokabelListe;
+	}
+
+	public FavouriteList getFavouriteList() {
+		return favouriteList;
 	}
 
 	/**

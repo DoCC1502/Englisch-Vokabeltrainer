@@ -1,6 +1,6 @@
 package englischVokabeltrainerCGH.model;
 import java.util.Random;
-
+import englischVokabeltrainerCGH.VokabController;
 /**
  * Die Klasse stellt eine Liste von VokabelPaaren dar.
  *
@@ -29,7 +29,20 @@ public class VokabelListe {
 	 * @param wortEn Wort in Englisch
 	 */
 	public void addVokabelPaar(String wortDe, String wortEn) {
+
 		VokabelPaar vokabelPaar = new VokabelPaar(wortDe, wortEn);
+		if(vokabelPaare == null) {
+			vokabelPaare = new VokabelPaar[1];
+			vokabelPaare[0] = vokabelPaar;
+		} else {
+			VokabelPaar[] temp = new VokabelPaar[vokabelPaare.length + 1];
+			for(int i = 0; i < vokabelPaare.length; i++) {
+				temp[i] = vokabelPaare[i];
+			}
+			temp[vokabelPaare.length] = vokabelPaar;
+			vokabelPaare = temp;
+		}
+
 	}
 
 	/**
@@ -39,16 +52,16 @@ public class VokabelListe {
 	 * @return true, wenn das VokabelPaar gelöscht wurde, sonst false
 	 */
 	public int searchVokabelPaar(String wortDe, String wortEn) {
-		if(vokabelPaare == null || vokabelPaare.length == 0) {
-			return -1;
-		}
-		for(int i = 0; i < vokabelPaare.length; i++) {
-			if(vokabelPaare[i].getWortDe().equals(wortDe) && vokabelPaare[i].getWortEn().equals(wortEn)) {
-				return i;
+		if(vokabelPaare != null || vokabelPaare.length != 0) {
+			for(int i = 0; i < vokabelPaare.length; i++) {
+				if(vokabelPaare[i].getWortDe().equals(wortDe) && vokabelPaare[i].getWortEn().equals(wortEn)) {
+					return i;
+				}
 			}
 		}
 		return -1;
 	}
+
 
 	/**
 	 * Gibt ein VokabelPaar zurück.
