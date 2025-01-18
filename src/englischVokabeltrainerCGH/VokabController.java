@@ -27,15 +27,15 @@ public class VokabController {
     public VokabController() {
         userAccount = new UserAccount();
         vTrainerModel = new VokabTrainer(userAccount);
-        homemenuPanel = new HomemenuPanel(this);
-        vFrame = new VokabFrame(homemenuPanel);
+        homemenuPanel = new HomemenuPanel();
+        vFrame = new VokabFrame(homemenuPanel, this);
         vSettings = new SettingsPanel(this);
         vLogin = new LoginPanel(this);
         vFav = new FavPanel(this);
         vTrainer = new VokabTrainerPanel(this);
-        vUpload = new UploadPanel(this, new UploadVokabelFile(new VokabelLoader()));
-        vResult = new ResultPanel(this);
-        vStatistik = new StatistikPanel(this);
+        vUpload = new UploadPanel(new UploadVokabelFile(new VokabelLoader()));
+        vResult = new ResultPanel(new Result());
+        vStatistik = new StatistikPanel(userAccount.getVokabelStatistik());
     }
 
 
@@ -47,6 +47,7 @@ public class VokabController {
     public UserAccount getUserAccount() {
         return userAccount;
     }
+
     public void handleLogin(String username, String level) {}
 
     public static void main(String[] args) {

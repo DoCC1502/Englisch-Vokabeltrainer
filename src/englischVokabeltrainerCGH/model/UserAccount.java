@@ -19,6 +19,7 @@ public class UserAccount implements Serializable {
 
 	private FavouriteList favouriteList;
 
+	private VokabelStatistik vokabelStatistik;
 	/**
 	 * Erstellt einen neuen UserAccount.
 	 * @param benutzername Benutzername
@@ -32,6 +33,8 @@ public class UserAccount implements Serializable {
 			this.passwort = passwort;
 			VokabelPaar[] vokabelPaare = new VokabelPaar[0];
 			this.vokabelListe = new VokabelListe(vokabelPaare);
+			favouriteList = new FavouriteList(0);
+			vokabelStatistik = new VokabelStatistik();
 		}
 	}
 
@@ -48,6 +51,8 @@ public class UserAccount implements Serializable {
 			this.level = level;
 			this.passwort = passwort;
 			this.vokabelListe = vokabelListe;
+			favouriteList = new FavouriteList(0);
+			vokabelStatistik = new VokabelStatistik();
 		}
 	}
 
@@ -61,7 +66,7 @@ public class UserAccount implements Serializable {
 		this.passwort = "12345678";
 		this.vokabelListe = new VokabelListe(new VokabelPaar[0]);
 		favouriteList = new FavouriteList(0);
-
+		vokabelStatistik = new VokabelStatistik();
 	}
 
 	/**
@@ -156,6 +161,14 @@ public class UserAccount implements Serializable {
 			return false;
 		}
 		return name.matches("[a-zA-Z0-9_-]+");
+	}
+
+	/**
+	 * Gibt die VokabelStatistik zurück.
+	 * @return VokabelStatistik
+	 */
+	public VokabelStatistik getVokabelStatistik() {
+		return vokabelStatistik;
 	}
 
 	/**

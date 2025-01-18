@@ -17,9 +17,11 @@ public class VokabFrame extends JFrame {
 	private ResultPanel resultPanel;
 	private VokabTrainerPanel vokabTrainerPanel;
 	private StatistikPanel statistikPanel;
+	private VokabController vController;
 
-	public VokabFrame(HomemenuPanel startPanel) {
+	public VokabFrame(HomemenuPanel startPanel, VokabController vController) {
 		this.homemenuPanel = startPanel;
+		this.vController = vController;
 		initializeFrame();
 	}
 
@@ -32,13 +34,13 @@ public class VokabFrame extends JFrame {
 		mainPanel = new JPanel(cardLayout);
 
 		// Initialize panels
-		uploadPanel = new UploadPanel(new VokabController(), new UploadVokabelFile(new VokabelLoader()));
-		settingsPanel = new SettingsPanel(new VokabController());
-		loginPanel = new LoginPanel(new VokabController());
-		favPanel = new FavPanel(new VokabController());
+		uploadPanel = new UploadPanel(new UploadVokabelFile(new VokabelLoader()));
+		settingsPanel = new SettingsPanel(vController);
+		loginPanel = new LoginPanel(vController);
+		favPanel = new FavPanel(vController);
 		resultPanel = new ResultPanel(new Result());
-		vokabTrainerPanel = new VokabTrainerPanel(new VokabController());
-		statistikPanel = new StatistikPanel(new VokabelStatistik(), new VokabelPaar("Hund", "Dog"));
+		vokabTrainerPanel = new VokabTrainerPanel(vController);
+		statistikPanel = new StatistikPanel(new VokabelStatistik());
 
 		// Add panels to mainPanel
 		addPanelToMainPanel("HomemenuPanel", homemenuPanel);
@@ -65,8 +67,9 @@ public class VokabFrame extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		HomemenuPanel startPanel = new HomemenuPanel(new VokabController());
-		VokabFrame frame = new VokabFrame(startPanel);
+		HomemenuPanel startPanel = new HomemenuPanel();
+		VokabController vController = new VokabController();
+		VokabFrame frame = new VokabFrame(startPanel, vController);
 		frame.setVisible(true);
 	}
 }

@@ -23,10 +23,16 @@ public class StatistikPanel extends JPanel {
 	 * Konstruktor
 	 * @param statistik Vokabelstatistik
 	 */
-	public StatistikPanel(VokabelStatistik statistik, VokabelPaar vokabelPaar) {
+	public StatistikPanel(VokabelStatistik statistik) {
 		this.statistik = statistik;
-		this.vokabelPaar = vokabelPaar;
+	}
+
+	public void runStatistikPanel() {
 		initializePanel();
+	}
+
+	public void insertVokabelPaar(VokabelPaar vokabelPaar) {
+		this.vokabelPaar = vokabelPaar;
 	}
 
 	private JButton createIconButton(String iconPath) {
@@ -82,10 +88,13 @@ public class StatistikPanel extends JPanel {
 		// Beispiel-Daten für die Statistik
 		VokabelStatistik statistik = new VokabelStatistik();
 		VokabelPaar vokabelPaar1 = new VokabelPaar("Hund", "Dog");
-
+		StatistikPanel sp = new StatistikPanel(statistik);
+		sp.insertVokabelPaar(vokabelPaar1);
+		sp.runStatistikPanel();
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new StatistikPanel(statistik, vokabelPaar1));
+		frame.add(sp);
+
 		frame.setSize(400, 400);
 		frame.setVisible(true);
 	}
