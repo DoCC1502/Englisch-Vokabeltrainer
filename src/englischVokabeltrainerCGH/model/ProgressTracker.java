@@ -6,7 +6,7 @@ import java.util.Arrays;
  * Diese Klasse repräsentiert die Login-Funktionalität des Programms.
  *
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
- * @version 0.1
+ * @version 1.0
  */
 public class ProgressTracker {
 

@@ -11,8 +11,8 @@ import java.util.List;
 /**
  * Panel für die Statistik
  *
- * @autor Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
- * @version 0.1
+ * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ * @version 1.0
  */
 public class StatistikPanel extends JPanel {
 
@@ -27,14 +27,26 @@ public class StatistikPanel extends JPanel {
 		this.statistik = statistik;
 	}
 
+	/**
+	 * Startet das Panel
+	 */
 	public void runStatistikPanel() {
 		initializePanel();
 	}
 
+	/**
+	 * Fügt ein VokabelPaar hinzu
+	 * @param vokabelPaar VokabelPaar
+	 */
 	public void insertVokabelPaar(VokabelPaar vokabelPaar) {
 		this.vokabelPaar = vokabelPaar;
 	}
 
+	/**
+	 * Erstellt einen Icon-Button
+	 * @param iconPath Pfad zum Icon
+	 * @return JButton
+	 */
 	private JButton createIconButton(String iconPath) {
 		ImageIcon icon = new ImageIcon(iconPath);
 		Image scaledImage = icon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
@@ -87,6 +99,10 @@ public class StatistikPanel extends JPanel {
 
 	}
 
+	/**
+	 * Main-Methode
+	 * @param args Argumente
+	 */
 	public static void main(String[] args) {
 		// Beispiel-Daten für die Statistik
 		VokabelStatistik statistik = new VokabelStatistik();

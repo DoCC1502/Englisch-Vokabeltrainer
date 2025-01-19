@@ -11,8 +11,8 @@ import java.util.Set;
 /**
  * Panel für die Favoriten
  *
- * @version 0.1
- * @autor Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ * @version 1.0
  */
 public class FavPanel extends JPanel {
 	private VokabController vController;
@@ -21,12 +21,19 @@ public class FavPanel extends JPanel {
 	private JList<String> vokabelList;
 	private DefaultListModel<String> listModel;
 
+	/**
+	 * Konstruktor
+	 * @param vController Controller
+	 */
 	public FavPanel(VokabController vController) {
 		this.vController = vController;
 		this.favorites = new HashSet<>();
 		initializeComponents();
 	}
 
+	/**
+	 * Initialisiert die Komponenten
+	 */
 	private void initializeComponents() {
 		setLayout(new BorderLayout());
 		setBackground(Color.WHITE);
@@ -91,6 +98,12 @@ public class FavPanel extends JPanel {
 		});
 	}
 
+	/**
+	 * Erstellt einen Icon-Button
+	 * @param iconPath Pfad zum Icon
+	 * @param panelName Name des Panels
+	 * @return JButton
+	 */
 	private JButton createIconButton(String iconPath, String panelName) {
 		ImageIcon icon = new ImageIcon(iconPath);
 		Image scaledImage = icon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
@@ -106,7 +119,9 @@ public class FavPanel extends JPanel {
 		});
 		return button;
 	}
-
+	/**
+	 * Erneuert das FavPanel
+	 */
 	public void renewFavpanel() {
 		listModel.clear();
 		for (int i = 0; i < vController.getUserAccount().getVokabelListe().getLength(); i++) {
@@ -116,6 +131,9 @@ public class FavPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * ListCellRenderer für die Vokabel-Liste
+	 */
 	private class VokabelListCellRenderer extends DefaultListCellRenderer {
 		@Override
 		public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
@@ -129,6 +147,10 @@ public class FavPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * Main-Methode
+	 * @param args Argumente
+	 */
 	public static void main(String[] args) {
 		VokabController vController = new VokabController();
 

@@ -4,14 +4,30 @@ import englischVokabeltrainerCGH.VokabController;
 
 import java.io.File;
 
+/**
+ * Diese Klasse dient dazu, eine Datei mit Vokabeln zu laden und die Vokabeln
+ *
+ * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ * @version 1.0
+ */
 public class UploadVokabelFile {
 
 	private VokabelLoader vokabelLoader;
 
+	/**
+	 * Konstruktor
+	 * @param vokabelLoader VokabelLoader
+	 */
 	public UploadVokabelFile(VokabelLoader vokabelLoader) {
 		this.vokabelLoader = vokabelLoader;
 	}
 
+	/**
+	 * Lädt eine Datei mit Vokabeln
+	 * @param file Datei
+	 * @param fileType Dateityp
+	 * @param vController VokabController
+	 */
 	public void loadVokabelFile(File file, String fileType, VokabController vController) {
 		switch (fileType.toLowerCase()) {
 			case "json":

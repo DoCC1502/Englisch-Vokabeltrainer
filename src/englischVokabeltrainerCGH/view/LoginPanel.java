@@ -13,8 +13,8 @@ import java.awt.event.ActionListener;
 /**
  * Panel für den Login
  *
- * @version 0.1
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ * @version 1.0
  */
 public class LoginPanel extends JPanel {
 
@@ -128,6 +128,12 @@ public class LoginPanel extends JPanel {
 		});
 	}
 
+	/**
+	 * Erstellt einen Icon-Button
+	 * @param iconPath Pfad zum Icon
+	 * @param panelName Name des Panels
+	 * @return JButton
+	 */
 	private JButton createIconButton(String iconPath, String panelName) {
 		ImageIcon icon = new ImageIcon(iconPath);
 		Image scaledImage = icon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
@@ -159,6 +165,10 @@ public class LoginPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * Main-Methode für den Test
+	 * @param args Kommandozeilenargumente
+	 */
 	public static void main(String[] args) {
 		// Erstelle das JFrame
 		JFrame frame = new JFrame("Englisch Vokabeltrainer - Login");

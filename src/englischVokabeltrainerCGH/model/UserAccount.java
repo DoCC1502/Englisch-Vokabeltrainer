@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Diese Klasse repräsentiert den UserAccount.
  *
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
- * @version 0.1
+ * @version 1.0
  */
 public class UserAccount implements Serializable {
 
@@ -164,6 +164,10 @@ public class UserAccount implements Serializable {
 		return vokabelListe;
 	}
 
+	/**
+	 * Setzt die FavouriteList.
+	 * @return FavouriteList
+	 */
 	public FavouriteList getFavouriteList() {
 		return favouriteList;
 	}

@@ -7,8 +7,8 @@ import java.util.Set;
 /**
  * Diese Klasse repräsentiert den Vokabeltrainer.
  *
- * @version 0.1
- * @autor Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ * @version 1.0
  */
 public class VokabTrainer {
 	UserAccount userAccount;
@@ -72,7 +72,7 @@ public class VokabTrainer {
 	}
 
 	/**
-	 * returned ob die antworten auf deutsch oder englisch sind
+	 * Returned, ob die antworten auf Deutsch oder Englisch sind
 	 * @return
 	 */
 	public boolean getIsGerman() {
@@ -80,7 +80,7 @@ public class VokabTrainer {
 	}
 
 	/**
-	 * Überprüft ob die Antwort richtig ist.
+	 * Überprüft, ob die Antwort richtig ist.
 	 * @param answer
 	 * @param correctTranslation
 	 * @param isGerman

@@ -15,8 +15,8 @@ import java.awt.image.BufferedImage;
 /**
  * Panel für das Hauptmenü
  *
- * @version 0.1
- * @autor Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ * @version 1.0
  */
 public class HomemenuPanel extends JPanel {
 
@@ -118,6 +118,12 @@ public class HomemenuPanel extends JPanel {
 		});
 	}
 
+	/**
+	 * Erstellt einen Icon-Button
+	 * @param iconPath Pfad zum Icon
+	 * @param panelName Name des Panels
+	 * @return JButton
+	 */
 	private JButton createIconButton(String iconPath, String panelName) {
 		ImageIcon icon = new ImageIcon(iconPath);
 		Image scaledImage = icon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
@@ -142,6 +148,10 @@ public class HomemenuPanel extends JPanel {
 		vController.getVFrame().switchToPanel("VokabTrainerPanel");
 	}
 
+	/**
+	 * Erneuert das Panel
+	 * @param args Kommandozeilenargumente
+	 */
 	public static void main(String[] args) {
 		VokabController vc = new VokabController();
 		VokabFrame vFrame = new VokabFrame(new HomemenuPanel(vc), vc);

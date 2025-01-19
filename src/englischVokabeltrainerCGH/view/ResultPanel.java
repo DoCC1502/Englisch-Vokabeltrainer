@@ -11,7 +11,7 @@ import javax.swing.*;
  * Panel für das Ergebnis
  *
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
- * @version 0.1
+ * @version 1.0
  */
 public class ResultPanel extends JPanel {
 
@@ -26,7 +26,12 @@ public class ResultPanel extends JPanel {
 		this.result = result;
 		initializeUI();
 	}
-
+	/**
+	 * Erstellt einen Icon-Button
+	 * @param iconPath Pfad zum Icon
+	 * @param panelName Name des Panels
+	 * @return JButton
+	 */
 	private JButton createIconButton(String iconPath, String panelName) {
 		ImageIcon icon = new ImageIcon(iconPath);
 		Image scaledImage = icon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
@@ -45,6 +50,9 @@ public class ResultPanel extends JPanel {
 
 	}
 
+	/**
+	 * Initialisiert das UI
+	 */
 	private void initializeUI() {
 		// Standardlayout auf 1x1 GridLayout setzen
 		setLayout(new GridLayout(1, 1));
@@ -144,11 +152,18 @@ public class ResultPanel extends JPanel {
 		add(container, BorderLayout.CENTER);
 	}
 
+	/**
+	 * Setzt das Ergebnis neu
+	 */
 	public void reinitializeUI() {
 		removeAll();
 		initializeUI();
 	}
 
+	/**
+	 * Main-Methode
+	 * @param args Argumente
+	 */
 	public static void main(String[] args) {
 		// Beispiel-Result
 		Result exampleResult = new Result();
