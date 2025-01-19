@@ -1,5 +1,6 @@
 package englischVokabeltrainerCGH.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Objects;
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
  * @version 0.1
  */
-public class VokabelPaar {
+public class VokabelPaar implements Serializable {
 
 	private String wortDe;
 

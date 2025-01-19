@@ -1,11 +1,14 @@
 package englischVokabeltrainerCGH.model;
+
+import java.io.Serializable;
+
 /**
  * Diese Klasse repräsentiert die Schwierigkeitsstufe.
  *
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
  * @version 0.1
  */
-public class SchwierigkeitsLevel {
+public class SchwierigkeitsLevel implements Serializable {
 
 	private int level;
 

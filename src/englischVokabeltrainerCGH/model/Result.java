@@ -1,11 +1,14 @@
 package englischVokabeltrainerCGH.model;
+
+import java.io.Serializable;
+
 /**
  * Diese Klasse repräsentiert das Ergebnis eines Quiz.
  *
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
  * @version 0.1
  */
-public class Result {
+public class Result implements Serializable {
 
 	private int falseAnswers;
 

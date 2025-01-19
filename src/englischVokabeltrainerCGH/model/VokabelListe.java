@@ -1,4 +1,5 @@
 package englischVokabeltrainerCGH.model;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -10,7 +11,7 @@ import englischVokabeltrainerCGH.VokabController;
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
  * @version 0.1
  */
-public class VokabelListe {
+public class VokabelListe implements Serializable {
 
 	private VokabelPaar[] vokabelPaare;
 

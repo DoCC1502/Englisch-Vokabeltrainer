@@ -44,7 +44,13 @@ public class VokabController {
         return userAccount;
     }
 
-    public void handleLogin(String username, String level) {}
+    public void handleLogin(String username, int level) {
+        userAccount = new UserAccount(username, new SchwierigkeitsLevel(level), "12345678");
+        vTrainerModel = new VokabTrainer(userAccount);
+        homemenuPanel = new HomemenuPanel(this);
+        vFrame = new VokabFrame(homemenuPanel, this);
+        vFrame.setVisible(true);
+    }
 
     public static void main(String[] args) {
         new VokabController();

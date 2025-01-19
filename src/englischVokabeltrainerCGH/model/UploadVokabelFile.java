@@ -3,8 +3,9 @@ package englischVokabeltrainerCGH.model;
 import englischVokabeltrainerCGH.VokabController;
 
 import java.io.File;
+import java.io.Serializable;
 
-public class UploadVokabelFile {
+public class UploadVokabelFile implements Serializable {
 
 	private VokabelLoader vokabelLoader;
 

@@ -37,8 +37,9 @@ public class ResultPanel extends JPanel {
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				vController.getVFrame().switchToPanel(panelName);
 				vController.getVFrame().resetVokabTrainer();
+				result.resetResult();
+				vController.getVFrame().switchToPanel(panelName);
 			}
 		});
 		return button;

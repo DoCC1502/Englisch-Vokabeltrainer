@@ -1,5 +1,6 @@
 package englischVokabeltrainerCGH.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -10,7 +11,7 @@ import java.util.Set;
  * @version 0.1
  * @autor Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
  */
-public class VokabTrainer {
+public class VokabTrainer implements Serializable {
 	UserAccount userAccount;
 	VokabelListe vokabelListe;
 	String[] question = new String[5];

@@ -147,42 +147,15 @@ public class LoginPanel extends JPanel {
 	private void handleSignIn() {
 		String username = usernameField.getText();
 		String level = (String) levelComboBox.getSelectedItem();
-
+		String parts = level.split(" ")[0]; // Entfernt die Klammern
+		level = parts;
+		int levelInt = Integer.parseInt(level); // Konvertiert den String in einen Integer
 		// Übergibt die Daten an den Controller
 		if (vController != null) {
-			vController.handleLogin(username, level);
+			vController.handleLogin(username, levelInt);
 		} else {
 			JOptionPane.showMessageDialog(this, "Controller ist nicht verfügbar!", "Fehler", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
-	public static void main(String[] args) {
-		// Erstelle das JFrame
-		JFrame frame = new JFrame("Englisch Vokabeltrainer - Login");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(600, 350);
-		frame.setLocationRelativeTo(null); // Zentriert das Fenster
-
-		// Simulierter Controller (falls du ihn noch nicht implementiert hast)
-		VokabController dummyController = new VokabController() {
-			@Override
-			public void handleLogin(String username, String level) {
-				// Einfach eine Nachricht ausgeben
-				System.out.println("Login-Daten:");
-				System.out.println("Username: " + username);
-				System.out.println("Level: " + level);
-				JOptionPane.showMessageDialog(null,
-						"Username: " + username + "\nLevel: " + level,
-						"Login erfolgreich",
-						JOptionPane.INFORMATION_MESSAGE);
-			}
-		};
-
-		// Füge das LoginPanel hinzu
-		LoginPanel loginPanel = new LoginPanel(dummyController);
-		frame.add(loginPanel);
-
-		// Zeige das Fenster
-		frame.setVisible(true);
-	}
 }

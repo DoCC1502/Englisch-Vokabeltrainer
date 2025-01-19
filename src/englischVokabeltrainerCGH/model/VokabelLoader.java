@@ -11,7 +11,7 @@ import org.json.JSONObject;
  * @author Dario Cikojevic
  * @version 0.1
  */
-public class VokabelLoader {
+public class VokabelLoader implements Serializable{
 
 	private VokabelPaar[] vokabelToAdd;
 	private UserAccount user;
