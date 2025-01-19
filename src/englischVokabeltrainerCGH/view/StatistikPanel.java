@@ -54,10 +54,13 @@ public class StatistikPanel extends JPanel {
 		JPanel iconPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 		iconPanel.setBackground(Color.WHITE);
 
+		// Icons hinzufügen
+		JButton iconButton0 = createIconButton("resource/Home.png");
 		JButton iconButton1 = createIconButton("resource/Upload.png");
 		JButton iconButton2 = createIconButton("resource/Favoriten.png");
 		JButton iconButton3 = createIconButton("resource/settings.png");
 
+		iconPanel.add(iconButton0);
 		iconPanel.add(iconButton1);
 		iconPanel.add(iconButton2);
 		iconPanel.add(iconButton3);

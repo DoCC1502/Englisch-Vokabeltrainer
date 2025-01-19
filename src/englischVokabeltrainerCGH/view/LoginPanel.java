@@ -53,10 +53,13 @@ public class LoginPanel extends JPanel {
 		JPanel rightIconsPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		rightIconsPanel.setBackground(Color.WHITE);
 
+		// Icons hinzufügen
+		JButton iconButton0 = createIconButton("resource/Home.png", "HomemenuPanel");
 		JButton iconButton1 = createIconButton("resource/Upload.png", "UploadPanel");
 		JButton iconButton2 = createIconButton("resource/Favoriten.png", "FavPanel");
 		JButton iconButton3 = createIconButton("resource/settings.png", "SettingsPanel");
 
+		rightIconsPanel.add(iconButton0);
 		rightIconsPanel.add(iconButton1);
 		rightIconsPanel.add(iconButton2);
 		rightIconsPanel.add(iconButton3);
