@@ -1,4 +1,7 @@
 package englischVokabeltrainerCGH.model;
+
+import java.util.Objects;
+
 /**
  * Diese Klasse repräsentiert ein Vokabelpaar.
  *
@@ -90,5 +93,18 @@ public class VokabelPaar {
 	 */
 	public SchwierigkeitsLevel getSchwierigkeit() {
 		return schwierigkeit;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		VokabelPaar that = (VokabelPaar) o;
+		return Objects.equals(wortDe, that.wortDe) && Objects.equals(wortEn, that.wortEn);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(wortDe, wortEn);
 	}
 }

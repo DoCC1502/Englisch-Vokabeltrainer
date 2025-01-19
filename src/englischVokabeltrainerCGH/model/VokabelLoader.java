@@ -31,11 +31,12 @@ public class VokabelLoader {
 		// Add vocabulary to the main list
 		vokabelToAdd = Arrays.copyOf(vokabelToAdd, vokabelToAdd.length + vokabeln.length);
 		System.arraycopy(vokabeln, 0, vokabelToAdd, vokabelToAdd.length - vokabeln.length, vokabeln.length);
+		user.getVokabelListe().removeDuplicates();
 		// Add vocabulary to the user account
 		for(VokabelPaar vokabel : vokabeln) {
 			user.getVokabelListe().addVokabelPaar(vokabel);
 		}
-
+		user.getVokabelListe().removeDuplicates();
 	}
 
 	/**
