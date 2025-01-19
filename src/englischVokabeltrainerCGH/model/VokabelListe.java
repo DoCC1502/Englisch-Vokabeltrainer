@@ -9,7 +9,7 @@ import englischVokabeltrainerCGH.VokabController;
  * Die Klasse stellt eine Liste von VokabelPaaren dar.
  *
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
- * @version 0.1
+ * @version 1.0
  */
 public class VokabelListe implements Serializable {
 
@@ -51,7 +51,7 @@ public class VokabelListe implements Serializable {
 
 	/**
 	 * Fügt ein VokabelPaar hinzu.
-	 * @param vp
+	 * @param vp VokabelPaar
 	 */
 	public void addVokabelPaar(VokabelPaar vp) {
 		if(vokabelPaare == null) {

@@ -10,7 +10,7 @@ import java.util.Random;
  * Panel für den Vokabeltrainer
  *
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
- * @version 0.1
+ * @version 1.0
  */
 public class VokabTrainerPanel extends JPanel {
 
@@ -29,7 +29,9 @@ public class VokabTrainerPanel extends JPanel {
 		this.vController = vController;
 		initializeComponents();
 	}
-
+	/**
+	 * Initialisiert die Komponenten
+	 */
 	private void initializeComponents() {
 		setLayout(new GridLayout(6,1));
 		setBackground(Color.WHITE);
@@ -96,6 +98,10 @@ public class VokabTrainerPanel extends JPanel {
 
 	}
 
+	/**
+	 * Gibt die ausgewählte Antwort zurück
+	 * @return String
+	 */
 	private String getSelectedAnswer() {
 		if (jRadioButton1.isSelected()) return jRadioButton1.getText();
 		if (jRadioButton2.isSelected()) return jRadioButton2.getText();
@@ -104,6 +110,11 @@ public class VokabTrainerPanel extends JPanel {
 		return null;
 	}
 
+	/**
+	 * Mischfunktion für ein Array
+	 * @param array Array
+	 * @return int[]
+	 */
 	private int[] shuffleArray(int[] array) {
 		Random r = new Random();
 		for (int i = array.length - 1; i > 0; i--) {
@@ -116,10 +127,17 @@ public class VokabTrainerPanel extends JPanel {
 		return array;
 	}
 
+	/**
+	 * Setzt den Counter zurück
+	 */
 	public void reset() {
 		questionCounter = 0;
 	}
 
+	/**
+	 * Gibt den Controller zurück
+	 * @param args Kommandozeilenargumente
+	 */
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 		VokabController vc = new VokabController();

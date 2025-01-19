@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Diese Klasse repräsentiert die Einstellungen.
  *
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
- * @version 0.1
+ * @version 1.0
  */
 public class Settings implements Serializable {
 

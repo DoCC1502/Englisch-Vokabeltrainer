@@ -9,7 +9,7 @@ import org.json.JSONObject;
  * Diese Klasse repräsentiert das Laden von Vokabeln.
  *
  * @author Dario Cikojevic
- * @version 0.1
+ * @version 1.0
  */
 public class VokabelLoader implements Serializable{
 
@@ -110,10 +110,17 @@ public class VokabelLoader implements Serializable{
 		}
 	}
 
+	/**
+	 * Gibt die Vokabeln zurück.
+	 * @param user UserAccount
+	 */
 	public void setUser(UserAccount user) {
 		this.user = user;
 	}
 
+	/**
+	 * Lädt die Vokabeln.
+	 */
 	public void loadVokabeln() {
 		addToMainList(vokabelToAdd, user);
 	}
