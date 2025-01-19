@@ -66,7 +66,7 @@ public class VokabelPaar {
 	 * @return Wort in Englisch
 	 */
 	public String getWortEn() {
-		return wortEn;
+		return wortEn.toLowerCase();
 	}
 
 	/**
