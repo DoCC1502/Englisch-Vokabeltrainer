@@ -3,7 +3,7 @@ package englischVokabeltrainerCGH.model;
  * Diese Klasse repräsentiert die Schwierigkeitsstufe.
  *
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
- * @version 0.1
+ * @version 1.0
  */
 public class SchwierigkeitsLevel {
 

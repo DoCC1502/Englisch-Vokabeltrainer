@@ -3,7 +3,7 @@ package englischVokabeltrainerCGH.model;
  * Diese Klasse repräsentiert ein Vokabelpaar.
  *
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
- * @version 0.1
+ * @version 1.0
  */
 public class VokabelPaar {
 
@@ -66,7 +66,7 @@ public class VokabelPaar {
 	 * @return Wort in Englisch
 	 */
 	public String getWortEn() {
-		return wortEn;
+		return wortEn.toLowerCase();
 	}
 
 	/**

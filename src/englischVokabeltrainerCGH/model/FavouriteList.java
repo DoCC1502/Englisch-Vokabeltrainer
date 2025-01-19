@@ -4,16 +4,18 @@ package englischVokabeltrainerCGH.model;
  * Eine Liste von Vokabeln, die als Favoriten markiert wurden.
  *
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
- * @version 0.1
+ * @version 1.0
  */
 public class FavouriteList {
 	private VokabelPaar[] favouriteWordList;
 
+	/**
+	 * Erstellt eine neue Favoritenliste.
+	 * @param i Die Größe der Favoritenliste.
+	 */
 	public FavouriteList(int i) {
 		favouriteWordList = new VokabelPaar[i];
 	}
-
-
 	/**
 	 * Erstellt eine neue Favoritenliste.
 	 */

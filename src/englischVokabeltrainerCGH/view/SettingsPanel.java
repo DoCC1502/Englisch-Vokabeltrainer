@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
  * Panel für die Einstellungen
  *
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
- * @version 0.1
+ * @version 1.0
  */
 public class SettingsPanel extends JPanel {
     private VokabController vController;
@@ -23,7 +23,12 @@ public class SettingsPanel extends JPanel {
 
 
     }
-
+    /**
+     * Erstellt einen Icon-Button
+     * @param iconPath Pfad zum Icon
+     * @param panelName Name des Panels
+     * @return JButton
+     */
     private JButton createIconButton(String iconPath, String panelName) {
         ImageIcon icon = new ImageIcon(iconPath);
         Image scaledImage = icon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
@@ -41,6 +46,9 @@ public class SettingsPanel extends JPanel {
 
     }
 
+    /**
+     * Initialisiert die Komponenten
+     */
     private void initializeComponents() {
         // Haupt-Layout (GridLayout für die Strukturierung)
         setLayout(new GridLayout(1, 1));
@@ -56,10 +64,13 @@ public class SettingsPanel extends JPanel {
         JPanel rightIconsPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         rightIconsPanel.setBackground(Color.WHITE);
 
+        // Icons hinzufügen
+        JButton iconButton0 = createIconButton("resource/Home.png", "HomemenuPanel");
         JButton iconButton1 = createIconButton("resource/Upload.png", "UploadPanel");
         JButton iconButton2 = createIconButton("resource/Favoriten.png", "FavPanel");
         JButton iconButton3 = createIconButton("resource/settings.png", "SettingsPanel");
 
+        rightIconsPanel.add(iconButton0);
         rightIconsPanel.add(iconButton1);
         rightIconsPanel.add(iconButton2);
         rightIconsPanel.add(iconButton3);
@@ -108,8 +119,8 @@ public class SettingsPanel extends JPanel {
         kontaktButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "unser Team:\nDario Cikojevic - Teamleiter: 0 123 456789\nBerkay Semi Genc - Developer: 0 123 456789" +
-                        "\nElias Hofbauer - Developer: 0 123 456789", "Kontaktdaten", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "unser Team:\nDario Cikojevic - Teamleiter: dcikojevic@student.tgm.ac.at\nBerkay Semi Genc - Developer: bgenc@student.tgm.ac.at" +
+                        "\nElias Hofbauer - Developer: ehofbauer@student.tgm.ac.at", "Kontaktdaten", JOptionPane.INFORMATION_MESSAGE);
             }
         });
         settingsPanel.add(kontaktLabel);

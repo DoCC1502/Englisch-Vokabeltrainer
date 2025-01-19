@@ -9,8 +9,8 @@ import java.awt.*;
 /**
  * Hauptframe des Vokabeltrainers
  *
- * @version 0.1
- * @autor Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
+ * @version 1.0
  */
 public class VokabFrame extends JFrame {
 	private CardLayout cardLayout;
@@ -25,12 +25,20 @@ public class VokabFrame extends JFrame {
 	private StatistikPanel statistikPanel;
 	private VokabController vController;
 
+	/**
+	 * Konstruktor
+	 * @param startPanel Startpanel
+	 * @param vController Controller
+	 */
 	public VokabFrame(HomemenuPanel startPanel, VokabController vController) {
 		this.homemenuPanel = startPanel;
 		this.vController = vController;
 		initializeFrame();
 	}
 
+	/**
+	 * Initialisiert den Frame
+	 */
 	private void initializeFrame() {
 		setTitle("Vokabeltrainer");
 		setSize(800, 600);
@@ -62,12 +70,21 @@ public class VokabFrame extends JFrame {
 		switchToPanel("HomemenuPanel");
 	}
 
+	/**
+	 * Fügt ein Panel zum Hauptpanel hinzu
+	 * @param name Name des Panels
+	 * @param panel Panel
+	 */
 	public void addPanelToMainPanel(String name, JPanel panel) {
 		if (panel != null) {
 			mainPanel.add(panel, name);
 		}
 	}
 
+	/**
+	 * Wechselt zum Panel
+	 * @param name Name des Panels
+	 */
 	public void switchToPanel(String name) {
 		cardLayout.show(mainPanel, name);
 		mainPanel.revalidate();
@@ -75,6 +92,10 @@ public class VokabFrame extends JFrame {
 		resultPanel.reinitializeUI();
 	}
 
+	/**
+	 * Gibt den Controller zurück
+	 * @param args Kommandozeilenargumente
+	 */
 	public static void main(String[] args) {
 		VokabController vController = new VokabController();
 		HomemenuPanel startPanel = new HomemenuPanel(vController);
@@ -82,10 +103,16 @@ public class VokabFrame extends JFrame {
 		frame.setVisible(true);
 	}
 
+	/**
+	 * Setzt den Vokabeltrainer zurück
+	 */
 	public void resetVokabTrainer() {
 		vokabTrainerPanel.reset();
 	}
 
+	/**
+	 * Gibt den Vokabeltrainer zurück
+	 */
 	public void renewFavpanel() {
 		favPanel.renewFavpanel();
 	}

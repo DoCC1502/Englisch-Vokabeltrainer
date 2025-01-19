@@ -17,7 +17,7 @@ import java.io.File;
  * Panel für das Uploaden von Vokabeln
  *
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
- * @version 0.1
+ * @version 1.0
  */
 public class UploadPanel extends JPanel {
 
@@ -29,6 +29,11 @@ public class UploadPanel extends JPanel {
 	private UploadVokabelFile uploadVokabelFile;
 	private VokabController vController;
 
+	/**
+	 * Konstruktor
+	 * @param uploadVokabelFile UploadVokabelFile
+	 * @param vController VokabController
+	 */
 	public UploadPanel(UploadVokabelFile uploadVokabelFile, VokabController vController) {
 		this.uploadVokabelFile = uploadVokabelFile;
 		this.vController = vController;
@@ -113,6 +118,12 @@ public class UploadPanel extends JPanel {
 		buttonPanel.setBackground(Color.WHITE);
 	}
 
+	/**
+	 * Validiert den Dateityp
+	 * @param file Datei
+	 * @param expectedFileType Erwarteter Dateityp
+	 * @return boolean
+	 */
 	private boolean validateFileType(File file, String expectedFileType) {
 		String fileName = file.getName().toLowerCase();
 		switch (expectedFileType) {
@@ -127,6 +138,12 @@ public class UploadPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * Lädt die Datei hoch
+	 * @param file Datei
+	 * @param fileType Dateityp
+	 * @return boolean
+	 */
 	private boolean uploadFile(File file, String fileType) {
 		try {
 			uploadVokabelFile.loadVokabelFile(file, fileType, vController);
@@ -143,6 +160,10 @@ public class UploadPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * Main-Methode
+	 * @param args Kommandozeilenargumente
+	 */
 	public static void main(String[] args) {
 		VokabelLoader dummyLoader = new VokabelLoader() {
 			@Override

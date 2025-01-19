@@ -3,7 +3,7 @@ package englischVokabeltrainerCGH.model;
  * Diese Klasse repräsentiert das Ergebnis eines Quiz.
  *
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
- * @version 0.1
+ * @version 1.0
  */
 public class Result {
 
@@ -67,6 +67,9 @@ public class Result {
 		return falseAnswers;
 	}
 
+	/**
+	 * Setzt das Ergebnis zurück.
+	 */
 	public void resetResult() {
 		this.falseAnswers = 0;
 		this.rightAnswers = 0;
