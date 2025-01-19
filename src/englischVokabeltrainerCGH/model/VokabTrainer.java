@@ -1,6 +1,8 @@
 package englischVokabeltrainerCGH.model;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * Diese Klasse repräsentiert den Vokabeltrainer.
@@ -30,28 +32,34 @@ public class VokabTrainer {
 	 */
 	public void nextQuestion() {
 		VokabelPaar vp = vokabelListe.getRandomVokabel();
+		Set<VokabelPaar> usedVokabelPaare = new HashSet<>();
+		usedVokabelPaare.add(vp);
+
 		VokabelPaar[] randomVokabelPaare = new VokabelPaar[3];
 		for (int i = 0; i < 3; i++) {
-			randomVokabelPaare[i] = vokabelListe.getRandomVokabel();
-			if (randomVokabelPaare[i].equals(vp)) {
-				i--;
-			}
+			VokabelPaar randomVokabel;
+			do {
+				randomVokabel = vokabelListe.getRandomVokabel();
+			} while (usedVokabelPaare.contains(randomVokabel));
+			randomVokabelPaare[i] = randomVokabel;
+			usedVokabelPaare.add(randomVokabel);
 		}
+
 		Random r = new Random();
 		boolean random = r.nextBoolean();
 		question[0] = random ? vp.getWortDe() : vp.getWortEn();
-		if(random) {
+		if (random) {
 			question[1] = vp.getWortEn();
 			question[2] = randomVokabelPaare[0].getWortEn();
 			question[3] = randomVokabelPaare[1].getWortEn();
 			question[4] = randomVokabelPaare[2].getWortEn();
-			isGerman=false;
+			isGerman = false;
 		} else {
 			question[1] = vp.getWortDe();
 			question[2] = randomVokabelPaare[0].getWortDe();
 			question[3] = randomVokabelPaare[1].getWortDe();
 			question[4] = randomVokabelPaare[2].getWortDe();
-			isGerman=true;
+			isGerman = true;
 		}
 	}
 
@@ -74,15 +82,15 @@ public class VokabTrainer {
 	/**
 	 * Überprüft ob die Antwort richtig ist.
 	 * @param answer
-	 * @param correctAnswer
+	 * @param correctTranslation
 	 * @param isGerman
 	 * @return
 	 */
-	public boolean isCorrect(String answer, String correctAnswer, boolean isGerman) {
+	public boolean isCorrect(String answer, String correctTranslation, boolean isGerman) {
 		if(isGerman) {
-            return vokabelListe.searchVokabelPaar(answer, correctAnswer) != -1;
+            return vokabelListe.searchVokabelPaar(answer, correctTranslation) != -1;
 		} else {
-            return vokabelListe.searchVokabelPaar(correctAnswer, answer) != -1;
+            return vokabelListe.searchVokabelPaar(correctTranslation, answer) != -1;
 		}
 	}
 

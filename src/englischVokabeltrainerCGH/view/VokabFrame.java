@@ -44,7 +44,7 @@ public class VokabFrame extends JFrame {
 		settingsPanel = new SettingsPanel(vController);
 		loginPanel = new LoginPanel(vController);
 		favPanel = new FavPanel(vController);
-		resultPanel = new ResultPanel(new Result());
+		resultPanel = new ResultPanel(vController.getVTrainerModel().getResultObj(), vController);
 		vokabTrainerPanel = new VokabTrainerPanel(vController);
 		statistikPanel = new StatistikPanel(new VokabelStatistik());
 
@@ -72,6 +72,7 @@ public class VokabFrame extends JFrame {
 		cardLayout.show(mainPanel, name);
 		mainPanel.revalidate();
 		mainPanel.repaint();
+		resultPanel.reinitializeUI();
 	}
 
 	public static void main(String[] args) {
@@ -79,6 +80,10 @@ public class VokabFrame extends JFrame {
 		HomemenuPanel startPanel = new HomemenuPanel(vController);
 		VokabFrame frame = new VokabFrame(startPanel, vController);
 		frame.setVisible(true);
+	}
+
+	public void resetVokabTrainer() {
+		vokabTrainerPanel.reset();
 	}
 
 	public void renewFavpanel() {

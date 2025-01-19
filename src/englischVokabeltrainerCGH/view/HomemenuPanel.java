@@ -137,7 +137,7 @@ public class HomemenuPanel extends JPanel {
 	 * Handhabt das Klicken auf den Start-Button
 	 */
 	private void handleStartButtonClick() {
-		JOptionPane.showMessageDialog(this, "Let's start learning!", "Start", JOptionPane.INFORMATION_MESSAGE);
+		vController.getVFrame().switchToPanel("VokabTrainerPanel");
 	}
 
 	public static void main(String[] args) {

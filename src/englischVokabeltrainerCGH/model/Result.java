@@ -67,4 +67,8 @@ public class Result {
 		return falseAnswers;
 	}
 
+	public void resetResult() {
+		this.falseAnswers = 0;
+		this.rightAnswers = 0;
+	}
 }

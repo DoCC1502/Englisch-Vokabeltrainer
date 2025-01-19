@@ -3,6 +3,8 @@ package englischVokabeltrainerCGH.view;
 import englischVokabeltrainerCGH.VokabController;
 import englischVokabeltrainerCGH.model.Result;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
@@ -19,27 +21,38 @@ public class ResultPanel extends JPanel {
 	/**
 	 * Konstruktor
 	 */
-	public ResultPanel(Result result) {
+	public ResultPanel(Result result, VokabController vController) {
+		this.vController = vController;
 		this.result = result;
 		initializeUI();
 	}
 
-	private JButton createIconButton(String iconPath) {
+	private JButton createIconButton(String iconPath, String panelName) {
 		ImageIcon icon = new ImageIcon(iconPath);
-		Image scaledImage = icon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+		Image scaledImage = icon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 		JButton button = new JButton(new ImageIcon(scaledImage));
 		button.setBorderPainted(false);
 		button.setContentAreaFilled(false);
 		button.setFocusPainted(false);
+		button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				vController.getVFrame().switchToPanel(panelName);
+				vController.getVFrame().resetVokabTrainer();
+			}
+		});
 		return button;
+
 	}
 
 	private void initializeUI() {
 		// Standardlayout auf 1x1 GridLayout setzen
 		setLayout(new GridLayout(1, 1));
+		setBackground(Color.WHITE);
 
 		// Panel 1 (Ergebnisanzeige) mit GridLayout
 		JPanel resultPanel = new JPanel(new GridLayout(3, 1, 0, 20));
+		resultPanel.setBackground(Color.WHITE);
 
 		// Punktestand Label
 		JLabel scoreLabel = new JLabel(result.getRightAnswers() + "/" + (result.getRightAnswers() + result.getFalseAnswers()), SwingConstants.CENTER);
@@ -54,6 +67,7 @@ public class ResultPanel extends JPanel {
 
 		// Button-Panel mit GridLayout
 		JPanel buttonPanel = new JPanel(new GridLayout(1, 2, 20, 0));
+		buttonPanel.setBackground(Color.WHITE);
 		JButton tryAgainButton = new JButton("Try again");
 		JButton finishButton = new JButton("Finish");
 
@@ -73,20 +87,21 @@ public class ResultPanel extends JPanel {
 
 		// Icons hinzufügen
 		JPanel iconPanel = new JPanel(new BorderLayout());
+		iconPanel.setBackground(Color.WHITE);
 
 		JPanel rightIconsPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 		rightIconsPanel.setBackground(Color.WHITE);
 
-		JButton iconButton1 = createIconButton("resource/Upload.png");
-		JButton iconButton2 = createIconButton("resource/Favoriten.png");
-		JButton iconButton3 = createIconButton("resource/settings.png");
+		JButton iconButton1 = createIconButton("resource/Upload.png", "UploadPanel");
+		JButton iconButton2 = createIconButton("resource/Favoriten.png", "FavPanel");
+		JButton iconButton3 = createIconButton("resource/settings.png", "SettingsPanel");
 
 		rightIconsPanel.add(iconButton1);
 		rightIconsPanel.add(iconButton2);
 		rightIconsPanel.add(iconButton3);
 
 		// Login Icon hinzufügen
-		JButton loginButton = createIconButton("resource/login.png");
+		JButton loginButton = createIconButton("resource/login.png", "LoginPanel");
 		JPanel leftIconsPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		leftIconsPanel.setBackground(Color.WHITE);
 		leftIconsPanel.add(loginButton);
@@ -101,13 +116,34 @@ public class ResultPanel extends JPanel {
 
 		// Button-Ereignisse für Panel-Wechsel
 		CardLayout cl = (CardLayout) container.getLayout();
-		tryAgainButton.addActionListener(e -> cl.show(container, "NewPanel"));
-		finishButton.addActionListener(e -> cl.show(container, "NewPanel"));
+
+		tryAgainButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				vController.getVFrame().switchToPanel("VokabTrainerPanel");
+				vController.getVFrame().resetVokabTrainer();
+				result.resetResult();
+			}
+		});
+
+		finishButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				vController.getVFrame().switchToPanel("HomemenuPanel");
+				vController.getVFrame().resetVokabTrainer();
+				result.resetResult();
+			}
+		});
 
 		// Container in das Hauptlayout einfügen
 		setLayout(new BorderLayout());
 		add(iconPanel, BorderLayout.NORTH);
 		add(container, BorderLayout.CENTER);
+	}
+
+	public void reinitializeUI() {
+		removeAll();
+		initializeUI();
 	}
 
 	public static void main(String[] args) {
@@ -116,7 +152,7 @@ public class ResultPanel extends JPanel {
 
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new ResultPanel(exampleResult));
+		frame.add(new ResultPanel(exampleResult, new VokabController()));
 		frame.setSize(400, 300);
 		frame.setVisible(true);
 	}
