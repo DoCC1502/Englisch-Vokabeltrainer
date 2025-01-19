@@ -72,7 +72,18 @@ public class UserAccount implements Serializable {
 		vokabelListe.addVokabelPaar("Auto", "Car");
 		vokabelListe.addVokabelPaar("Katze", "Cat");
 		vokabelListe.addVokabelPaar("Hund", "Dog");
-
+		vokabelListe.addVokabelPaar("Stuhl", "Chair");
+		vokabelListe.addVokabelPaar("Tisch", "Table");
+		vokabelListe.addVokabelPaar("Stift", "Pen");
+		vokabelListe.addVokabelPaar("Buch", "Book");
+		vokabelListe.addVokabelPaar("Fenster", "Window");
+		vokabelListe.addVokabelPaar("Tür", "Door");
+		vokabelListe.addVokabelPaar("Lampe", "Lamp");
+		vokabelListe.addVokabelPaar("Bett", "Bed");
+		vokabelListe.addVokabelPaar("Kissen", "Pillow");
+		vokabelListe.addVokabelPaar("Decke", "Blanket");
+		vokabelListe.addVokabelPaar("Kühlschrank", "Fridge");
+		vokabelListe.addVokabelPaar("Mikrowelle", "Microwave");
 	}
 
 	/**

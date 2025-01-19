@@ -50,12 +50,16 @@ public class VokabTrainerPanel extends JPanel {
 
 		jRadioButton1 = new JRadioButton(questions[numbers[0]]);
 		jRadioButton1.setBackground(Color.WHITE);
+		jRadioButton1.setFont(new Font("Arial", Font.PLAIN, 20));
 		jRadioButton2 = new JRadioButton(questions[numbers[1]]);
 		jRadioButton2.setBackground(Color.WHITE);
+		jRadioButton2.setFont(new Font("Arial", Font.PLAIN, 20));
 		jRadioButton3 = new JRadioButton(questions[numbers[2]]);
 		jRadioButton3.setBackground(Color.WHITE);
+		jRadioButton3.setFont(new Font("Arial", Font.PLAIN, 20));
 		jRadioButton4 = new JRadioButton(questions[numbers[3]]);
 		jRadioButton4.setBackground(Color.WHITE);
+		jRadioButton4.setFont(new Font("Arial", Font.PLAIN, 20));
 		G1.add(jRadioButton1);
 		G1.add(jRadioButton2);
 		G1.add(jRadioButton3);
@@ -80,8 +84,8 @@ public class VokabTrainerPanel extends JPanel {
 				jRadioButton2.setText(questions1[numbers[1]]);
 				jRadioButton3.setText(questions1[numbers[2]]);
 				jRadioButton4.setText(questions1[numbers[3]]);
-				G1.clearSelection();
 			}
+			G1.clearSelection();
 		});
 
 		add(jRadioButton1);
@@ -110,6 +114,10 @@ public class VokabTrainerPanel extends JPanel {
 			array[j] = temp;
 		}
 		return array;
+	}
+
+	public void reset() {
+		questionCounter = 0;
 	}
 
 	public static void main(String[] args) {
