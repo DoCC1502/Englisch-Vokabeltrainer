@@ -42,8 +42,9 @@ public class ResultPanel extends JPanel {
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				vController.getVFrame().switchToPanel(panelName);
 				vController.getVFrame().resetVokabTrainer();
+				result.resetResult();
+				vController.getVFrame().switchToPanel(panelName);
 			}
 		});
 		return button;
@@ -63,7 +64,7 @@ public class ResultPanel extends JPanel {
 		resultPanel.setBackground(Color.WHITE);
 
 		// Punktestand Label
-		JLabel scoreLabel = new JLabel(result.getRightAnswers() + "/" + (result.getRightAnswers() + result.getFalseAnswers()), SwingConstants.CENTER);
+		JLabel scoreLabel = new JLabel(result.getRightAnswers() + "/10", SwingConstants.CENTER);
 		scoreLabel.setFont(new Font("Arial", Font.BOLD, 48));
 		scoreLabel.setForeground(Color.GREEN);
 		resultPanel.add(scoreLabel);

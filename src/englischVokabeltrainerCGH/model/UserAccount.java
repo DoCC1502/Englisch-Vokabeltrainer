@@ -28,12 +28,16 @@ public class UserAccount implements Serializable {
 	 * @param passwort Passwort
 	 */
 	public UserAccount(String benutzername, SchwierigkeitsLevel level, String passwort) {
-		if (benutzername != null && level != null && passwort != null && checkUsername(benutzername) && passwort.length() > 8) {
+		if (benutzername != null && level != null && passwort != null && checkUsername(benutzername) && passwort.length() >= 8) {
 			this.benutzername = benutzername;
 			this.level = level;
 			this.passwort = passwort;
 			VokabelPaar[] vokabelPaare = new VokabelPaar[0];
 			this.vokabelListe = new VokabelListe(vokabelPaare);
+			vokabelListe.addVokabelPaar("Haus", "House");
+			vokabelListe.addVokabelPaar("Auto", "Car");
+			vokabelListe.addVokabelPaar("Katze", "Cat");
+			vokabelListe.addVokabelPaar("Hund", "Dog");
 			favouriteList = new FavouriteList(0);
 			vokabelStatistik = new VokabelStatistik();
 		}
@@ -52,6 +56,7 @@ public class UserAccount implements Serializable {
 			this.level = level;
 			this.passwort = passwort;
 			this.vokabelListe = vokabelListe;
+
 			favouriteList = new FavouriteList(0);
 			vokabelStatistik = new VokabelStatistik();
 		}
@@ -79,11 +84,13 @@ public class UserAccount implements Serializable {
 		vokabelListe.addVokabelPaar("Fenster", "Window");
 		vokabelListe.addVokabelPaar("Tür", "Door");
 		vokabelListe.addVokabelPaar("Lampe", "Lamp");
-		vokabelListe.addVokabelPaar("Bett", "Bed");
-		vokabelListe.addVokabelPaar("Kissen", "Pillow");
-		vokabelListe.addVokabelPaar("Decke", "Blanket");
+		vokabelListe.addVokabelPaar("Telefon", "Phone");
+		vokabelListe.addVokabelPaar("Computer", "Computer");
+		vokabelListe.addVokabelPaar("Fernseher", "TV");
 		vokabelListe.addVokabelPaar("Kühlschrank", "Fridge");
 		vokabelListe.addVokabelPaar("Mikrowelle", "Microwave");
+		vokabelListe.addVokabelPaar("Kaffeemaschine", "Coffee machine");
+		vokabelListe.addVokabelPaar("Toaster", "Toaster");
 	}
 
 	/**

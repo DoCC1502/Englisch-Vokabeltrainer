@@ -35,8 +35,11 @@ public class FavPanel extends JPanel {
 	 * Initialisiert die Komponenten
 	 */
 	private void initializeComponents() {
-		setLayout(new BorderLayout());
+		setLayout(new GridLayout(1, 1));
 		setBackground(Color.WHITE);
+
+		JPanel framePanel = new JPanel(new BorderLayout());
+		framePanel.setBackground(Color.WHITE);
 
 		// Top panel with icon buttons
 		JPanel iconPanel = new JPanel(new BorderLayout());
@@ -63,7 +66,7 @@ public class FavPanel extends JPanel {
 		iconPanel.add(leftIconsPanel, BorderLayout.WEST);
 		iconPanel.add(rightIconsPanel, BorderLayout.EAST);
 
-		add(iconPanel, BorderLayout.NORTH);
+		framePanel.add(iconPanel, BorderLayout.NORTH);
 
 		// Main content
 		listModel = new DefaultListModel<>();
@@ -77,8 +80,8 @@ public class FavPanel extends JPanel {
 		vokabelList.setCellRenderer(new VokabelListCellRenderer());
 		JScrollPane scrollPane = new JScrollPane(vokabelList);
 
-		add(scrollPane, BorderLayout.CENTER);
-		add(jbFav, BorderLayout.SOUTH);
+		framePanel.add(scrollPane, BorderLayout.CENTER);
+		framePanel.add(jbFav, BorderLayout.SOUTH);
 
 		jbFav.addActionListener(new ActionListener() {
 			@Override
@@ -96,6 +99,8 @@ public class FavPanel extends JPanel {
 				}
 			}
 		});
+
+		add(framePanel);
 	}
 
 	/**

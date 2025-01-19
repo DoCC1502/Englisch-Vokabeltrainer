@@ -3,6 +3,8 @@ package englischVokabeltrainerCGH.model;
 import englischVokabeltrainerCGH.VokabController;
 
 import java.io.File;
+import java.io.Serializable;
+
 
 /**
  * Diese Klasse dient dazu, eine Datei mit Vokabeln zu laden und die Vokabeln
@@ -10,7 +12,8 @@ import java.io.File;
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
  * @version 1.0
  */
-public class UploadVokabelFile {
+public class UploadVokabelFile implements Serializable{
+
 
 	private VokabelLoader vokabelLoader;
 

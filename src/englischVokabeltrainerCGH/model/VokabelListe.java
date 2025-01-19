@@ -1,5 +1,9 @@
 package englischVokabeltrainerCGH.model;
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
+
 import englischVokabeltrainerCGH.VokabController;
 /**
  * Die Klasse stellt eine Liste von VokabelPaaren dar.
@@ -7,7 +11,7 @@ import englischVokabeltrainerCGH.VokabController;
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
  * @version 1.0
  */
-public class VokabelListe {
+public class VokabelListe implements Serializable {
 
 	private VokabelPaar[] vokabelPaare;
 
@@ -110,6 +114,23 @@ public class VokabelListe {
 		for (int i = 0; i < vokabelPaare.length; i++) {
 			vokabelPaare[i] = null;
 		}
+	}
+
+
+	/**
+	 * Entfernt Duplikate aus der Liste.
+	 */
+	public void removeDuplicates() {
+		if (vokabelPaare == null || vokabelPaare.length == 0) {
+			return;
+		}
+
+		Set<VokabelPaar> uniqueVokabelPaare = new HashSet<>();
+		for (VokabelPaar vp : vokabelPaare) {
+			uniqueVokabelPaare.add(vp);
+		}
+
+		vokabelPaare = uniqueVokabelPaare.toArray(new VokabelPaar[0]);
 	}
 
 	/**

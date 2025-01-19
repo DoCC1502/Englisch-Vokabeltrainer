@@ -34,6 +34,7 @@ public class SaveLoadUserAccount {
 			oos.writeObject(userAccount);
 		} catch (IOException e) {
 			System.err.println("Fehler beim Speichern des UserAccounts: " + e.getMessage());
+			e.printStackTrace();
 		}
 	}
 

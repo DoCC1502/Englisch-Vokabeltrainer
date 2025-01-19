@@ -1,12 +1,14 @@
 package englischVokabeltrainerCGH.model;
 
+import java.io.Serializable;
+
 /**
  * Eine Liste von Vokabeln, die als Favoriten markiert wurden.
  *
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
  * @version 1.0
  */
-public class FavouriteList {
+public class FavouriteList implements Serializable {
 	private VokabelPaar[] favouriteWordList;
 
 	/**

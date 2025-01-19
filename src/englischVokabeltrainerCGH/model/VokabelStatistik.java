@@ -1,5 +1,6 @@
 package englischVokabeltrainerCGH.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
  * @version 1.0
  */
-public class VokabelStatistik {
+public class VokabelStatistik implements Serializable {
 
 	private int gesamtFalsch;
 

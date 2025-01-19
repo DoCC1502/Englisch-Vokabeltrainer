@@ -52,12 +52,20 @@ public class VokabController {
         return userAccount;
     }
 
+
     /**
      * Setzt das Benutzerkonto.
      * @param username Benutzername
      * @param level Schwierigkeitsgrad
      */
-    public void handleLogin(String username, String level) {}
+    public void handleLogin(String username, int level) {
+        userAccount = new UserAccount(username, new SchwierigkeitsLevel(level), "12345678");
+        vTrainerModel = new VokabTrainer(userAccount);
+        homemenuPanel = new HomemenuPanel(this);
+        vFrame = new VokabFrame(homemenuPanel, this);
+        vFrame.setVisible(true);
+    }
+
 
     /**
      * Startet den Vokabeltrainer.
