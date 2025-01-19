@@ -46,6 +46,24 @@ public class VokabelListe {
 	}
 
 	/**
+	 * Fügt ein VokabelPaar hinzu.
+	 * @param vp
+	 */
+	public void addVokabelPaar(VokabelPaar vp) {
+		if(vokabelPaare == null) {
+			vokabelPaare = new VokabelPaar[1];
+			vokabelPaare[0] = vp;
+		} else {
+			VokabelPaar[] temp = new VokabelPaar[vokabelPaare.length + 1];
+			for(int i = 0; i < vokabelPaare.length; i++) {
+				temp[i] = vokabelPaare[i];
+			}
+			temp[vokabelPaare.length] = vp;
+			vokabelPaare = temp;
+		}
+	}
+
+	/**
 	 * Löscht ein VokabelPaar.
 	 * @param wortDe Wort in Deutsch
 	 * @param wortEn Wort in Englisch

@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class VokabelLoader {
 
 	private VokabelPaar[] vokabelToAdd;
-
+	private UserAccount user;
 	/**
 	 * Konstruktor VokabelLoader.
 	 */
@@ -31,7 +31,10 @@ public class VokabelLoader {
 		// Add vocabulary to the main list
 		vokabelToAdd = Arrays.copyOf(vokabelToAdd, vokabelToAdd.length + vokabeln.length);
 		System.arraycopy(vokabeln, 0, vokabelToAdd, vokabelToAdd.length - vokabeln.length, vokabeln.length);
-
+		// Add vocabulary to the user account
+		for(VokabelPaar vokabel : vokabeln) {
+			user.getVokabelListe().addVokabelPaar(vokabel);
+		}
 
 	}
 
@@ -104,5 +107,13 @@ public class VokabelLoader {
 		} catch (IOException e) {
 			System.err.println("Fehler beim Lesen der JSON-Datei.");
 		}
+	}
+
+	public void setUser(UserAccount user) {
+		this.user = user;
+	}
+
+	public void loadVokabeln() {
+		addToMainList(vokabelToAdd, user);
 	}
 }

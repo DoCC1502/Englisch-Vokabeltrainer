@@ -16,28 +16,22 @@ public class VokabController {
     private VokabTrainer vTrainerModel;
     private HomemenuPanel homemenuPanel;
     private VokabFrame vFrame;
-    private SettingsPanel vSettings;
-    private LoginPanel vLogin;
-    private FavPanel vFav;
-    private VokabTrainerPanel vTrainer;
-    private UploadPanel vUpload;
-    private ResultPanel vResult;
-    private StatistikPanel vStatistik;
+
 
     public VokabController() {
         userAccount = new UserAccount();
         vTrainerModel = new VokabTrainer(userAccount);
-        homemenuPanel = new HomemenuPanel();
+        homemenuPanel = new HomemenuPanel(this);
         vFrame = new VokabFrame(homemenuPanel, this);
-        vSettings = new SettingsPanel(this);
-        vLogin = new LoginPanel(this);
-        vFav = new FavPanel(this);
-        vTrainer = new VokabTrainerPanel(this);
-        vUpload = new UploadPanel(new UploadVokabelFile(new VokabelLoader()));
-        vResult = new ResultPanel(new Result());
-        vStatistik = new StatistikPanel(userAccount.getVokabelStatistik());
+        vFrame.setVisible(true);
     }
-
+    public VokabController(UserAccount userAccount) {
+        this.userAccount = userAccount;
+        vTrainerModel = new VokabTrainer(userAccount);
+        homemenuPanel = new HomemenuPanel(this);
+        vFrame = new VokabFrame(homemenuPanel, this);
+        vFrame.setVisible(true);
+    }
 
 
     public FavouriteList getFavouriteList() {
@@ -53,5 +47,13 @@ public class VokabController {
     public static void main(String[] args) {
         new VokabController();
 
+    }
+
+    public void renewFavpanel() {
+        vFrame.renewFavpanel();
+    }
+
+    public VokabFrame getVFrame() {
+        return vFrame;
     }
 }

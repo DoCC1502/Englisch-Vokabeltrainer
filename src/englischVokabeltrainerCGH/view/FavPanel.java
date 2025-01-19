@@ -1,9 +1,6 @@
 package englischVokabeltrainerCGH.view;
 
 import englischVokabeltrainerCGH.VokabController;
-
-import englischVokabeltrainerCGH.model.UserAccount;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,57 +8,68 @@ import java.awt.event.ActionListener;
 import java.util.HashSet;
 import java.util.Set;
 
-
 /**
  * Panel für die Favoriten
  *
- * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
  * @version 0.1
+ * @autor Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
  */
-
 public class FavPanel extends JPanel {
-
-
 	private VokabController vController;
-
 	private JButton jbFav = new JButton("als Favorit markieren");
 	private Set<String> favorites;
 	private JList<String> vokabelList;
 	private DefaultListModel<String> listModel;
 
-	/**
-	 * Konstruktor
-	 * @param vController Controller
-	 */
-	public FavPanel(VokabController vController){
+	public FavPanel(VokabController vController) {
 		this.vController = vController;
 		this.favorites = new HashSet<>();
-		setLayout(new GridLayout(1, 1));
-		JPanel framePanel = new JPanel(new BorderLayout());
-		JPanel topPanel = new JPanel();
+		initializeComponents();
+	}
 
-		JPanel mainPanel = new JPanel();
-		mainPanel.setLayout(new GridLayout(1, 2));
-		JPanel leftPanel = new JPanel();
-		JPanel rightPanel = new JPanel();
+	private void initializeComponents() {
+		setLayout(new BorderLayout());
+		setBackground(Color.WHITE);
 
-		leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+		// Top panel with icon buttons
+		JPanel iconPanel = new JPanel(new BorderLayout());
+		iconPanel.setBackground(Color.WHITE);
+
+		JPanel rightIconsPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		rightIconsPanel.setBackground(Color.WHITE);
+
+		JButton iconButton1 = createIconButton("resource/Upload.png", "UploadPanel");
+		JButton iconButton2 = createIconButton("resource/Favoriten.png", "FavPanel");
+		JButton iconButton3 = createIconButton("resource/settings.png", "SettingsPanel");
+
+		rightIconsPanel.add(iconButton1);
+		rightIconsPanel.add(iconButton2);
+		rightIconsPanel.add(iconButton3);
+
+		JButton loginButton = createIconButton("resource/login.png", "LoginPanel");
+		JPanel leftIconsPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		leftIconsPanel.setBackground(Color.WHITE);
+		leftIconsPanel.add(loginButton);
+
+		iconPanel.add(leftIconsPanel, BorderLayout.WEST);
+		iconPanel.add(rightIconsPanel, BorderLayout.EAST);
+
+		add(iconPanel, BorderLayout.NORTH);
+
+		// Main content
 		listModel = new DefaultListModel<>();
-
-		int heightLeftPanel = 0;
-		for (int i = 0; i < vController.getUserAccount().getVokabelListe().getLength() ; i++) {
-			StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < vController.getUserAccount().getVokabelListe().getLength(); i++) {
 			String vokabelEN = vController.getUserAccount().getVokabelListe().getVokabelPaar(i).getWortEn();
 			String vokabelDE = vController.getUserAccount().getVokabelListe().getVokabelPaar(i).getWortDe();
-			sb.append(vokabelEN).append(" - ").append(vokabelDE);
-			String vokabel = sb.toString();
-			listModel.addElement(vokabel);
-			heightLeftPanel += 18;
+			listModel.addElement(vokabelEN + " - " + vokabelDE);
 		}
 
 		vokabelList = new JList<>(listModel);
 		vokabelList.setCellRenderer(new VokabelListCellRenderer());
-		leftPanel.add(vokabelList);
+		JScrollPane scrollPane = new JScrollPane(vokabelList);
+
+		add(scrollPane, BorderLayout.CENTER);
+		add(jbFav, BorderLayout.SOUTH);
 
 		jbFav.addActionListener(new ActionListener() {
 			@Override
@@ -71,41 +79,39 @@ public class FavPanel extends JPanel {
 					if (favorites.contains(selectedValue)) {
 						favorites.remove(selectedValue);
 						vController.getFavouriteList().removeFavWord(vController.getUserAccount().getVokabelListe().getVokabelPaar(vokabelList.getSelectedIndex()));
-						for (int i=0; i<vController.getFavouriteList().getFavList().length; i++) {
-							System.out.println(vController.getFavouriteList().getFavWord(i).getWortDe());
-						}
 					} else {
 						favorites.add(selectedValue);
 						vController.getFavouriteList().addFavWord(vController.getUserAccount().getVokabelListe().getVokabelPaar(vokabelList.getSelectedIndex()));
-						for (int i=0; i<vController.getFavouriteList().getFavList().length; i++) {
-							System.out.println(vController.getFavouriteList().getFavWord(i).getWortDe());
-						}
-						System.out.println("\n");
-						vController.getFavouriteList().getFavList();
-
 					}
 					vokabelList.repaint();
 				}
 			}
 		});
+	}
 
-		rightPanel.setLayout(new GridLayout(2, 1));
+	private JButton createIconButton(String iconPath, String panelName) {
+		ImageIcon icon = new ImageIcon(iconPath);
+		Image scaledImage = icon.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+		JButton button = new JButton(new ImageIcon(scaledImage));
+		button.setBorderPainted(false);
+		button.setContentAreaFilled(false);
+		button.setFocusPainted(false);
+		button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				vController.getVFrame().switchToPanel(panelName);
+			}
+		});
+		return button;
+	}
 
-		JPanel topRightPanel = new JPanel();
-
-		rightPanel.add(topRightPanel);
-
-		leftPanel.setPreferredSize(new Dimension(200, heightLeftPanel));
-		JScrollPane scrollPane = new JScrollPane(leftPanel);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		mainPanel.setPreferredSize(new Dimension(450, 400));
-		mainPanel.add(scrollPane);
-		mainPanel.add(rightPanel);
-		topRightPanel.add(jbFav);
-
-		framePanel.add(topPanel, BorderLayout.NORTH);
-		framePanel.add(mainPanel, BorderLayout.CENTER);
-		add(mainPanel);
+	public void renewFavpanel() {
+		listModel.clear();
+		for (int i = 0; i < vController.getUserAccount().getVokabelListe().getLength(); i++) {
+			String vokabelEN = vController.getUserAccount().getVokabelListe().getVokabelPaar(i).getWortEn();
+			String vokabelDE = vController.getUserAccount().getVokabelListe().getVokabelPaar(i).getWortDe();
+			listModel.addElement(vokabelEN + " - " + vokabelDE);
+		}
 	}
 
 	private class VokabelListCellRenderer extends DefaultListCellRenderer {
@@ -122,7 +128,6 @@ public class FavPanel extends JPanel {
 	}
 
 	public static void main(String[] args) {
-
 		VokabController vController = new VokabController();
 
 		vController.getUserAccount().getVokabelListe().addVokabelPaar("Hund", "Dog");
@@ -131,15 +136,11 @@ public class FavPanel extends JPanel {
 		vController.getUserAccount().getVokabelListe().addVokabelPaar("Vogel", "Bird");
 		vController.getUserAccount().getVokabelListe().addVokabelPaar("Fisch", "Fish");
 
-
-
-
 		JFrame frame = new JFrame();
 		FavPanel favPanel = new FavPanel(vController);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(500, 500);
 		frame.add(favPanel);
-
 		frame.setVisible(true);
 	}
 }
