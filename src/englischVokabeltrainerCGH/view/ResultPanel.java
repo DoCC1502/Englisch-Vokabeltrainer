@@ -110,6 +110,11 @@ public class ResultPanel extends JPanel {
 		add(container, BorderLayout.CENTER);
 	}
 
+	public void reinitializeUI() {
+		removeAll();
+		initializeUI();
+	}
+
 	public static void main(String[] args) {
 		// Beispiel-Result
 		Result exampleResult = new Result();

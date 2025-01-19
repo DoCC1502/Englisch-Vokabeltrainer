@@ -23,6 +23,7 @@ public class VokabController {
         vTrainerModel = new VokabTrainer(userAccount);
         homemenuPanel = new HomemenuPanel(this);
         vFrame = new VokabFrame(homemenuPanel, this);
+
         vFrame.setVisible(true);
     }
     public VokabController(UserAccount userAccount) {
@@ -30,6 +31,7 @@ public class VokabController {
         vTrainerModel = new VokabTrainer(userAccount);
         homemenuPanel = new HomemenuPanel(this);
         vFrame = new VokabFrame(homemenuPanel, this);
+
         vFrame.setVisible(true);
     }
 
@@ -55,5 +57,13 @@ public class VokabController {
 
     public VokabFrame getVFrame() {
         return vFrame;
+    }
+
+    public VokabTrainer getVTrainerModel() {
+        return vTrainerModel;
+    }
+
+    public void updateResult(boolean isCorrect) {
+        vTrainerModel.getResultObj().incrementResult(isCorrect);
     }
 }

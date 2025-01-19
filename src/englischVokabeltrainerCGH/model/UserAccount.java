@@ -68,6 +68,11 @@ public class UserAccount implements Serializable {
 		this.vokabelListe = new VokabelListe(new VokabelPaar[0]);
 		favouriteList = new FavouriteList(0);
 		vokabelStatistik = new VokabelStatistik();
+		vokabelListe.addVokabelPaar("Haus", "House");
+		vokabelListe.addVokabelPaar("Auto", "Car");
+		vokabelListe.addVokabelPaar("Katze", "Cat");
+		vokabelListe.addVokabelPaar("Hund", "Dog");
+
 	}
 
 	/**
