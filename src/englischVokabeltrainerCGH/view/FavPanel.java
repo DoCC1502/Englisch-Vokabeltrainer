@@ -105,6 +105,15 @@ public class FavPanel extends JPanel {
 		return button;
 	}
 
+	public void renewFavpanel() {
+		listModel.clear();
+		for (int i = 0; i < vController.getUserAccount().getVokabelListe().getLength(); i++) {
+			String vokabelEN = vController.getUserAccount().getVokabelListe().getVokabelPaar(i).getWortEn();
+			String vokabelDE = vController.getUserAccount().getVokabelListe().getVokabelPaar(i).getWortDe();
+			listModel.addElement(vokabelEN + " - " + vokabelDE);
+		}
+	}
+
 	private class VokabelListCellRenderer extends DefaultListCellRenderer {
 		@Override
 		public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {

@@ -31,7 +31,7 @@ public class UploadPanel extends JPanel {
 
 	public UploadPanel(UploadVokabelFile uploadVokabelFile, VokabController vController) {
 		this.uploadVokabelFile = uploadVokabelFile;
-
+		this.vController = vController;
 		setLayout(new GridLayout(5, 1, 10, 10));
 		setBackground(Color.WHITE);
 
@@ -129,7 +129,13 @@ public class UploadPanel extends JPanel {
 
 	private boolean uploadFile(File file, String fileType) {
 		try {
-			uploadVokabelFile.loadVokabelFile(file, fileType);
+			uploadVokabelFile.loadVokabelFile(file, fileType, vController);
+			System.out.println("Diese Vokabeln wurden hinzugefügt: ");
+			for (int i = 0; i < vController.getUserAccount().getVokabelListe().getLength(); i++) {
+				VokabelPaar paar = vController.getUserAccount().getVokabelListe().getVokabelPaar(i);
+				System.out.println(paar.getWortDe()+ " - " + paar.getWortEn());
+			}
+			vController.renewFavpanel();
 			return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();

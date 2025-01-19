@@ -94,7 +94,7 @@ public class LoginPanel extends JPanel {
 		JPanel levelPanel = new JPanel(new BorderLayout());
 		levelPanel.setBackground(Color.WHITE);
 		JLabel levelLabel = new JLabel("Level:");
-		levelComboBox = new JComboBox<>(new String[]{"A1", "A2", "B1", "B2", "C1", "C2"});
+		levelComboBox = new JComboBox<>(new String[]{"1 (Leicht)", "2 (Mittel)", "3 (Schwer)"});
 		levelPanel.add(levelLabel, BorderLayout.NORTH);
 		levelPanel.add(levelComboBox, BorderLayout.CENTER);
 

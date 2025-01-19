@@ -1,0 +1,3 @@
+Hund,Dog
+Katze,Cat
+Vogel,Bird

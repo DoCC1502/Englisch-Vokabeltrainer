@@ -12,7 +12,7 @@ import java.io.*;
  */
 public class SaveLoadUserAccount {
 
-	private String defaultPfad;
+	private String defaultPfad = "saves/AccountData/";
 
 	/**
 	 * Erstellt ein neues SaveLoadUserAccount.

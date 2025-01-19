@@ -80,4 +80,8 @@ public class VokabFrame extends JFrame {
 		VokabFrame frame = new VokabFrame(startPanel, vController);
 		frame.setVisible(true);
 	}
+
+	public void renewFavpanel() {
+		favPanel.renewFavpanel();
+	}
 }

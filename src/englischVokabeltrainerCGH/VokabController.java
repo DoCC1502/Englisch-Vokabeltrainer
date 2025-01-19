@@ -49,6 +49,10 @@ public class VokabController {
 
     }
 
+    public void renewFavpanel() {
+        vFrame.renewFavpanel();
+    }
+
     public VokabFrame getVFrame() {
         return vFrame;
     }

@@ -1,5 +1,6 @@
 package englischVokabeltrainerCGH.model;
 
+import englischVokabeltrainerFileHandler.SaveLoadUserAccount;
 import java.io.Serializable;
 /**
  * Diese Klasse repräsentiert den UserAccount.
@@ -174,11 +175,19 @@ public class UserAccount implements Serializable {
 	/**
 	 * Löscht den UserAccount.
 	 */
-	protected void deleteEverything() {
+	public void deleteEverything() {
 		level=null;
 		vokabelListe.deleteList();
 		vokabelListe=null;
 		benutzername=null;
 		passwort=null;
+	}
+
+	/**
+	 * Speichert den UserAccount.
+	 */
+	public void saveAccount() {
+		new SaveLoadUserAccount().saveUserAccount(this, benutzername + ".ser");
+
 	}
 }
