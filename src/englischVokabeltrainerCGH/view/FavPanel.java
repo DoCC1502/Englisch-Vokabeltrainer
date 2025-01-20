@@ -10,9 +10,6 @@ import java.util.Set;
 
 /**
  * Panel für die Favoriten
- *
- * @author Dario Cikojevic, Berkay Semi Genc, Elias Hofbauer
- * @version 1.0
  */
 public class FavPanel extends JPanel {
 	private VokabController vController;
@@ -20,6 +17,7 @@ public class FavPanel extends JPanel {
 	private Set<String> favorites;
 	private JList<String> vokabelList;
 	private DefaultListModel<String> listModel;
+	private Set<String> existingFavorites;
 
 	/**
 	 * Konstruktor
@@ -28,7 +26,9 @@ public class FavPanel extends JPanel {
 	public FavPanel(VokabController vController) {
 		this.vController = vController;
 		this.favorites = new HashSet<>();
+		this.existingFavorites = new HashSet<>();
 		initializeComponents();
+		addExistingFavorites();
 	}
 
 	/**
@@ -104,6 +104,18 @@ public class FavPanel extends JPanel {
 	}
 
 	/**
+	 * Fügt bestehende Favoriten hinzu
+	 */
+	private void addExistingFavorites() {
+		for (int i = 0; i < vController.getFavouriteList().getFavList().length; i++) {
+			String vokabelEN = vController.getFavouriteList().getFavWord(i).getWortEn();
+			String vokabelDE = vController.getFavouriteList().getFavWord(i).getWortDe();
+			existingFavorites.add(vokabelEN + " - " + vokabelDE);
+		}
+		favorites.addAll(existingFavorites);
+	}
+
+	/**
 	 * Erstellt einen Icon-Button
 	 * @param iconPath Pfad zum Icon
 	 * @param panelName Name des Panels
@@ -124,6 +136,7 @@ public class FavPanel extends JPanel {
 		});
 		return button;
 	}
+
 	/**
 	 * Erneuert das FavPanel
 	 */

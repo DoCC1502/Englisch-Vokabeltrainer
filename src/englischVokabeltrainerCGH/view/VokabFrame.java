@@ -105,6 +105,13 @@ public class VokabFrame extends JFrame {
 	}
 
 	/**
+	 * Schließt den Frame
+	 */
+	public void closeFrame() {
+		this.dispose();
+	}
+
+	/**
 	 * Setzt den Vokabeltrainer zurück
 	 */
 	public void resetVokabTrainer() {
