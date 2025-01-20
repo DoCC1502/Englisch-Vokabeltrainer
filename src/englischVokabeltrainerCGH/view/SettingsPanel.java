@@ -92,12 +92,6 @@ public class SettingsPanel extends JPanel {
         settingsPanel.add(settingsLabel);
         settingsPanel.add(new JLabel("")); // Empty label to fill the grid slot
 
-        JLabel levelLabel = new JLabel("Level ändern:", SwingConstants.CENTER);
-        levelLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-        levelComboBox = new JComboBox<>(new String[]{"1 (Leicht)", "2 (Mittel)", "3 (Schwer)"});
-        settingsPanel.add(levelLabel);
-        settingsPanel.add(levelComboBox);
-
         JLabel accountSpeichernLabel = new JLabel("Account speichern:", SwingConstants.CENTER);
         accountSpeichernLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         JButton accountSpeichernButton = new JButton("Speichern");

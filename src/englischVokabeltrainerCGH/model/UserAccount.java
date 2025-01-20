@@ -24,7 +24,6 @@ public class UserAccount implements Serializable {
 
 	private FavouriteList favouriteList;
 
-	private VokabelStatistik vokabelStatistik;
 	/**
 	 * Erstellt einen neuen UserAccount.
 	 * @param benutzername Benutzername
@@ -54,7 +53,6 @@ public class UserAccount implements Serializable {
 			vokabelListe.addVokabelPaar("Kompliziert", "Complicated");
 			vokabelListe.addVokabelPaar("Durchschnitt", "Average");
 			favouriteList = new FavouriteList(0);
-			vokabelStatistik = new VokabelStatistik();
 		}
 	}
 
@@ -73,7 +71,6 @@ public class UserAccount implements Serializable {
 			this.vokabelListe = vokabelListe;
 
 			favouriteList = new FavouriteList(0);
-			vokabelStatistik = new VokabelStatistik();
 		}
 	}
 
@@ -87,7 +84,6 @@ public class UserAccount implements Serializable {
 		this.passwort = "12345678";
 		initializeVokabelListe(sl);
 		favouriteList = new FavouriteList(0);
-		vokabelStatistik = new VokabelStatistik();
 	}
 
 	private void initializeVokabelListe(SchwierigkeitsLevel level) {
@@ -219,14 +215,6 @@ public class UserAccount implements Serializable {
 	}
 
 	/**
-	 * Gibt die VokabelStatistik zurück.
-	 * @return VokabelStatistik
-	 */
-	public VokabelStatistik getVokabelStatistik() {
-		return vokabelStatistik;
-	}
-
-	/**
 	 * Löscht den UserAccount.
 	 */
 	public void deleteEverything() {
@@ -242,7 +230,6 @@ public class UserAccount implements Serializable {
 		benutzername = null;
 		passwort = null;
 		favouriteList = new FavouriteList(0);
-		vokabelStatistik = null;
 	}
 
 	/**
