@@ -54,7 +54,7 @@ public class SaveLoadUserAccount {
 	 * @return UserAccount
 	 */
 	public UserAccount loadUserAccount(String filename, String pfad) {
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(pfad + filename))) {
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("saves/AccountData/" + filename + ".ser"))) {
 			return (UserAccount) ois.readObject();
 		} catch (IOException | ClassNotFoundException e) {
 			System.err.println("Fehler beim Laden des UserAccounts: " + e.getMessage());

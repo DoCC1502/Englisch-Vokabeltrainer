@@ -1,6 +1,8 @@
 package englischVokabeltrainerCGH;
 import englischVokabeltrainerCGH.model.*;
 import englischVokabeltrainerCGH.view.*;
+import englischVokabeltrainerFileHandler.SaveLoadUserAccount;
+
 import javax.swing.*;
 import java.io.File;
 import java.io.FileInputStream;
@@ -78,20 +80,14 @@ public class VokabController {
         int response = JOptionPane.showConfirmDialog(null, "Haben Sie bereits einen Account?", "Account Abfrage",
                 JOptionPane.YES_NO_OPTION);
 
+        SaveLoadUserAccount saveLoadUserAccount = new SaveLoadUserAccount();
+
         if (response == JOptionPane.YES_OPTION) {
             String username = JOptionPane.showInputDialog(null, "Bitte geben Sie Ihren Benutzernamen ein:");
             if (username != null && !username.trim().isEmpty()) {
-                File file = new File("saves/AccountData/" + username + ".ser");
-                if (file.exists()) {
-                    try (FileInputStream fileIn = new FileInputStream(file);
-                         ObjectInputStream in = new ObjectInputStream(fileIn)) {
-                        UserAccount userAccount = (UserAccount) in.readObject();
-                        new VokabController(userAccount);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        JOptionPane.showMessageDialog(null, "Fehler beim Laden des Benutzerkontos. Das Programm wird normal gestartet.");
-                        new VokabController();
-                    }
+                UserAccount userAccount = saveLoadUserAccount.loadUserAccount(username);
+                if (userAccount != null) {
+                    new VokabController(userAccount);
                 } else {
                     JOptionPane.showMessageDialog(null, "Benutzerkonto nicht gefunden. Das Programm wird normal gestartet.");
                     new VokabController();
@@ -103,7 +99,6 @@ public class VokabController {
         } else {
             new VokabController();
         }
-
     }
 
     /**
