@@ -133,6 +133,7 @@ public class SettingsPanel extends JPanel {
                 int dialogResult = JOptionPane.showConfirmDialog(null, "Möchten Sie Ihren Account wirklich löschen?", "Account löschen", JOptionPane.YES_NO_OPTION);
                 if (dialogResult == JOptionPane.YES_OPTION) {
                     vController.getUserAccount().deleteEverything();
+                    vController.renewFavpanel();
                     JOptionPane.showMessageDialog(null, "Account wurde gelöscht.", "Account gelöscht", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
