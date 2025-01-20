@@ -233,7 +233,7 @@ public class UserAccount implements Serializable {
 		level = null;
 		if (vokabelListe != null) {
 			vokabelListe.deleteList();
-			vokabelListe = null;
+			initializeVokabelListe(new SchwierigkeitsLevel(1));
 		}
 		File userFile = new File("saves/AccountData/" + benutzername + ".ser");
 		if (userFile.exists()) {
