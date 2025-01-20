@@ -42,14 +42,17 @@ public class UserAccount implements Serializable {
 			vokabelListe.addVokabelPaar("Auto", "Car");
 			vokabelListe.addVokabelPaar("Katze", "Cat");
 			vokabelListe.addVokabelPaar("Hund", "Dog");
+			vokabelListe.addVokabelPaar("Maus", "Mouse");
 			vokabelListe.addVokabelPaar("Schwierig", "Difficult");
 			vokabelListe.addVokabelPaar("Herausforderung", "Challenge");
 			vokabelListe.addVokabelPaar("Komplex", "Complex");
 			vokabelListe.addVokabelPaar("Fortgeschritten", "Advanced");
+			vokabelListe.addVokabelPaar("Zusammenfassung", "Summary");
 			vokabelListe.addVokabelPaar("Unmöglich", "Impossible");
 			vokabelListe.addVokabelPaar("Erheblich", "Significant");
 			vokabelListe.addVokabelPaar("Herausfordernd", "Challenging");
 			vokabelListe.addVokabelPaar("Kompliziert", "Complicated");
+			vokabelListe.addVokabelPaar("Durchschnitt", "Average");
 			favouriteList = new FavouriteList(0);
 			vokabelStatistik = new VokabelStatistik();
 		}
