@@ -16,7 +16,7 @@ public class Settings implements Serializable {
 	 * Erstellt eine neue Einstellung.
 	 * @param userAccount Benutzeraccount
 	 */
-	Settings(UserAccount userAccount) {
+	public Settings(UserAccount userAccount) {
 		this.userAccount = userAccount;
 	}
 	/**

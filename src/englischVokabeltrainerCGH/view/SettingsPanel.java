@@ -60,25 +60,23 @@ public class SettingsPanel extends JPanel {
         JPanel iconPanel = new JPanel(new BorderLayout());
         iconPanel.setBackground(Color.WHITE);
 
-        // Icons hinzufügen
         JPanel rightIconsPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         rightIconsPanel.setBackground(Color.WHITE);
 
-        // Icons hinzufügen
-        JButton iconButton0 = createIconButton("resource/Home.png", "HomemenuPanel");
         JButton iconButton1 = createIconButton("resource/Upload.png", "UploadPanel");
         JButton iconButton2 = createIconButton("resource/Favoriten.png", "FavPanel");
         JButton iconButton3 = createIconButton("resource/settings.png", "SettingsPanel");
 
-        rightIconsPanel.add(iconButton0);
         rightIconsPanel.add(iconButton1);
         rightIconsPanel.add(iconButton2);
         rightIconsPanel.add(iconButton3);
 
+        JButton iconButton0 = createIconButton("resource/Home.png", "HomemenuPanel");
         JButton loginButton = createIconButton("resource/login.png", "LoginPanel");
         JPanel leftIconsPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         leftIconsPanel.setBackground(Color.WHITE);
         leftIconsPanel.add(loginButton);
+        leftIconsPanel.add(iconButton0);
 
         iconPanel.add(leftIconsPanel, BorderLayout.WEST);
         iconPanel.add(rightIconsPanel, BorderLayout.EAST);

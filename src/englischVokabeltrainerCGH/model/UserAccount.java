@@ -1,6 +1,8 @@
 package englischVokabeltrainerCGH.model;
 
 import englischVokabeltrainerFileHandler.SaveLoadUserAccount;
+
+import java.io.File;
 import java.io.Serializable;
 /**
  * Diese Klasse repräsentiert den UserAccount.
@@ -70,27 +72,36 @@ public class UserAccount implements Serializable {
 		this.level = sl;
 		this.benutzername = "Gast";
 		this.passwort = "12345678";
-		this.vokabelListe = new VokabelListe(new VokabelPaar[0]);
+		initializeVokabelListe(sl);
 		favouriteList = new FavouriteList(0);
 		vokabelStatistik = new VokabelStatistik();
-		vokabelListe.addVokabelPaar("Haus", "House");
-		vokabelListe.addVokabelPaar("Auto", "Car");
-		vokabelListe.addVokabelPaar("Katze", "Cat");
-		vokabelListe.addVokabelPaar("Hund", "Dog");
-		vokabelListe.addVokabelPaar("Stuhl", "Chair");
-		vokabelListe.addVokabelPaar("Tisch", "Table");
-		vokabelListe.addVokabelPaar("Stift", "Pen");
-		vokabelListe.addVokabelPaar("Buch", "Book");
-		vokabelListe.addVokabelPaar("Fenster", "Window");
-		vokabelListe.addVokabelPaar("Tür", "Door");
-		vokabelListe.addVokabelPaar("Lampe", "Lamp");
-		vokabelListe.addVokabelPaar("Telefon", "Phone");
-		vokabelListe.addVokabelPaar("Computer", "Computer");
-		vokabelListe.addVokabelPaar("Fernseher", "TV");
-		vokabelListe.addVokabelPaar("Kühlschrank", "Fridge");
-		vokabelListe.addVokabelPaar("Mikrowelle", "Microwave");
-		vokabelListe.addVokabelPaar("Kaffeemaschine", "Coffee machine");
-		vokabelListe.addVokabelPaar("Toaster", "Toaster");
+	}
+
+	private void initializeVokabelListe(SchwierigkeitsLevel level) {
+		VokabelPaar[] vokabelPaare;
+		if (level.getLevel() == 1) {
+			vokabelPaare = new VokabelPaar[]{
+					new VokabelPaar("Haus", "House"),
+					new VokabelPaar("Auto", "Car"),
+					new VokabelPaar("Katze", "Cat"),
+					new VokabelPaar("Hund", "Dog")
+			};
+		} else if (level.getLevel() == 2) {
+			vokabelPaare = new VokabelPaar[]{
+					new VokabelPaar("Schwierig", "Difficult"),
+					new VokabelPaar("Herausforderung", "Challenge"),
+					new VokabelPaar("Komplex", "Complex"),
+					new VokabelPaar("Fortgeschritten", "Advanced")
+			};
+		} else {
+			vokabelPaare = new VokabelPaar[]{
+					new VokabelPaar("Unmöglich", "Impossible"),
+					new VokabelPaar("Erheblich", "Significant"),
+					new VokabelPaar("Herausfordernd", "Challenging"),
+					new VokabelPaar("Kompliziert", "Complicated")
+			};
+		}
+		this.vokabelListe = new VokabelListe(vokabelPaare);
 	}
 
 	/**
@@ -188,7 +199,7 @@ public class UserAccount implements Serializable {
 		if (!(name.length() > 3 && name.length() < 20)) {
 			return false;
 		}
-		return name.matches("[a-zA-Z0-9_-]+");
+		return name.matches("[a-zA-Z0-9_\\- ]+");
 	}
 
 	/**
@@ -203,11 +214,19 @@ public class UserAccount implements Serializable {
 	 * Löscht den UserAccount.
 	 */
 	public void deleteEverything() {
-		level=null;
-		vokabelListe.deleteList();
-		vokabelListe=null;
-		benutzername=null;
-		passwort=null;
+		level = null;
+		if (vokabelListe != null) {
+			vokabelListe.deleteList();
+			vokabelListe = null;
+		}
+		File userFile = new File("saves/AccountData/" + benutzername + ".ser");
+		if (userFile.exists()) {
+			userFile.delete();
+		}
+		benutzername = null;
+		passwort = null;
+		favouriteList = new FavouriteList(0);
+		vokabelStatistik = null;
 	}
 
 	/**

@@ -43,6 +43,7 @@ public class VokabFrame extends JFrame {
 		setTitle("Vokabeltrainer");
 		setSize(800, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 
 		cardLayout = new CardLayout();
 		mainPanel = new JPanel(cardLayout);

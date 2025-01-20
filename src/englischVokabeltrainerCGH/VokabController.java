@@ -1,6 +1,11 @@
 package englischVokabeltrainerCGH;
 import englischVokabeltrainerCGH.model.*;
 import englischVokabeltrainerCGH.view.*;
+import javax.swing.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
 /**
  * Diese Klasse repräsentiert den Vokabeltrainer.
  *
@@ -20,7 +25,6 @@ public class VokabController {
         vTrainerModel = new VokabTrainer(userAccount);
         homemenuPanel = new HomemenuPanel(this);
         vFrame = new VokabFrame(homemenuPanel, this);
-
         vFrame.setVisible(true);
     }
     /**
@@ -32,7 +36,6 @@ public class VokabController {
         vTrainerModel = new VokabTrainer(userAccount);
         homemenuPanel = new HomemenuPanel(this);
         vFrame = new VokabFrame(homemenuPanel, this);
-
         vFrame.setVisible(true);
     }
 
@@ -72,7 +75,34 @@ public class VokabController {
      * @param args Kommandozeilenargumente
      */
     public static void main(String[] args) {
-        new VokabController();
+        int response = JOptionPane.showConfirmDialog(null, "Haben Sie bereits einen Account?", "Account Abfrage",
+                JOptionPane.YES_NO_OPTION);
+
+        if (response == JOptionPane.YES_OPTION) {
+            String username = JOptionPane.showInputDialog(null, "Bitte geben Sie Ihren Benutzernamen ein:");
+            if (username != null && !username.trim().isEmpty()) {
+                File file = new File("saves/AccountData/" + username + ".ser");
+                if (file.exists()) {
+                    try (FileInputStream fileIn = new FileInputStream(file);
+                         ObjectInputStream in = new ObjectInputStream(fileIn)) {
+                        UserAccount userAccount = (UserAccount) in.readObject();
+                        new VokabController(userAccount);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "Fehler beim Laden des Benutzerkontos. Das Programm wird normal gestartet.");
+                        new VokabController();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Benutzerkonto nicht gefunden. Das Programm wird normal gestartet.");
+                    new VokabController();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Ungültiger Benutzername. Das Programm wird normal gestartet.");
+                new VokabController();
+            }
+        } else {
+            new VokabController();
+        }
 
     }
 
