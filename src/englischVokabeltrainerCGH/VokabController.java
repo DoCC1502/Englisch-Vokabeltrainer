@@ -67,6 +67,7 @@ public class VokabController {
         userAccount = new UserAccount(username, new SchwierigkeitsLevel(level), "12345678");
         vTrainerModel = new VokabTrainer(userAccount);
         homemenuPanel = new HomemenuPanel(this);
+        vFrame.closeFrame();
         vFrame = new VokabFrame(homemenuPanel, this);
         vFrame.setVisible(true);
     }
