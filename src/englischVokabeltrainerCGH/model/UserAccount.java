@@ -1,6 +1,8 @@
 package englischVokabeltrainerCGH.model;
 
 import englischVokabeltrainerFileHandler.SaveLoadUserAccount;
+import englischVokabeltrainerCGH.model.*
+		;
 
 import java.io.File;
 import java.io.Serializable;
@@ -40,6 +42,14 @@ public class UserAccount implements Serializable {
 			vokabelListe.addVokabelPaar("Auto", "Car");
 			vokabelListe.addVokabelPaar("Katze", "Cat");
 			vokabelListe.addVokabelPaar("Hund", "Dog");
+			vokabelListe.addVokabelPaar("Schwierig", "Difficult");
+			vokabelListe.addVokabelPaar("Herausforderung", "Challenge");
+			vokabelListe.addVokabelPaar("Komplex", "Complex");
+			vokabelListe.addVokabelPaar("Fortgeschritten", "Advanced");
+			vokabelListe.addVokabelPaar("Unmöglich", "Impossible");
+			vokabelListe.addVokabelPaar("Erheblich", "Significant");
+			vokabelListe.addVokabelPaar("Herausfordernd", "Challenging");
+			vokabelListe.addVokabelPaar("Kompliziert", "Complicated");
 			favouriteList = new FavouriteList(0);
 			vokabelStatistik = new VokabelStatistik();
 		}
@@ -84,21 +94,24 @@ public class UserAccount implements Serializable {
 					new VokabelPaar("Haus", "House"),
 					new VokabelPaar("Auto", "Car"),
 					new VokabelPaar("Katze", "Cat"),
-					new VokabelPaar("Hund", "Dog")
+					new VokabelPaar("Hund", "Dog"),
+					new VokabelPaar("Maus", "Mouse"),
 			};
 		} else if (level.getLevel() == 2) {
 			vokabelPaare = new VokabelPaar[]{
 					new VokabelPaar("Schwierig", "Difficult"),
 					new VokabelPaar("Herausforderung", "Challenge"),
 					new VokabelPaar("Komplex", "Complex"),
-					new VokabelPaar("Fortgeschritten", "Advanced")
+					new VokabelPaar("Fortgeschritten", "Advanced"),
+					new VokabelPaar("Zusammenfassung", "Summary")
 			};
 		} else {
 			vokabelPaare = new VokabelPaar[]{
 					new VokabelPaar("Unmöglich", "Impossible"),
 					new VokabelPaar("Erheblich", "Significant"),
 					new VokabelPaar("Herausfordernd", "Challenging"),
-					new VokabelPaar("Kompliziert", "Complicated")
+					new VokabelPaar("Kompliziert", "Complicated"),
+					new VokabelPaar("Durchschnitt", "Average")
 			};
 		}
 		this.vokabelListe = new VokabelListe(vokabelPaare);
