@@ -208,7 +208,7 @@ public class UserAccount implements Serializable {
 	 * @return true, wenn der Benutzername korrekt ist, sonst false
 	 */
 	public boolean checkUsername(String name) {
-		if (!(name.length() > 3 && name.length() < 20)) {
+		if (!(name.length() > 0 && name.length() < 20)) {
 			return false;
 		}
 		return name.matches("[a-zA-Z0-9_\\- ]+");

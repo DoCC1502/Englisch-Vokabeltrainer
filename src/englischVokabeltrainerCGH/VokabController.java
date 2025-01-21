@@ -4,9 +4,6 @@ import englischVokabeltrainerCGH.view.*;
 import englischVokabeltrainerFileHandler.SaveLoadUserAccount;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
 
 /**
  * Diese Klasse repräsentiert den Vokabeltrainer.

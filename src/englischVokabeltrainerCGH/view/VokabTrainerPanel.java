@@ -88,6 +88,7 @@ public class VokabTrainerPanel extends JPanel {
 				jRadioButton4.setText(questions1[numbers[3]]);
 			}
 			G1.clearSelection();
+			vController.renewFavpanel();
 		});
 
 		add(jRadioButton1);

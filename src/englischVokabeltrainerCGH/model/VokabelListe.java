@@ -15,8 +15,6 @@ public class VokabelListe implements Serializable {
 
 	private VokabelPaar[] vokabelPaare;
 
-	private VokabelStatistik vokabelStatistik;
-
 	private VokabelPaar vokabelPaar;
 
 	/**

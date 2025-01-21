@@ -15,8 +15,6 @@ public class VokabelPaar implements Serializable {
 
 	private String wortEn;
 
-	private VokabelPaarStatistik vokabelPaarStatistik;
-
 	private boolean isFavourite;
 
 	private SchwierigkeitsLevel schwierigkeit;

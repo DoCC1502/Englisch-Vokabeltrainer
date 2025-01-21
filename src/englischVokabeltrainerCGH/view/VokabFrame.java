@@ -22,7 +22,6 @@ public class VokabFrame extends JFrame {
 	private FavPanel favPanel;
 	private ResultPanel resultPanel;
 	private VokabTrainerPanel vokabTrainerPanel;
-	private StatistikPanel statistikPanel;
 	private VokabController vController;
 
 	/**
@@ -55,7 +54,6 @@ public class VokabFrame extends JFrame {
 		favPanel = new FavPanel(vController);
 		resultPanel = new ResultPanel(vController.getVTrainerModel().getResultObj(), vController);
 		vokabTrainerPanel = new VokabTrainerPanel(vController);
-		statistikPanel = new StatistikPanel(new VokabelStatistik());
 
 		// Add panels to mainPanel
 		addPanelToMainPanel("HomemenuPanel", homemenuPanel);
@@ -65,7 +63,6 @@ public class VokabFrame extends JFrame {
 		addPanelToMainPanel("FavPanel", favPanel);
 		addPanelToMainPanel("ResultPanel", resultPanel);
 		addPanelToMainPanel("VokabTrainerPanel", vokabTrainerPanel);
-		addPanelToMainPanel("StatistikPanel", statistikPanel);
 
 		add(mainPanel);
 		switchToPanel("HomemenuPanel");
